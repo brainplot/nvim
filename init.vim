@@ -33,6 +33,9 @@ let g:lightline = {
 " Remove trailing whitespaces
 autocmd BufWritePre * %s/\s\+$//e
 
+" Remove trailing blank lines
+autocmd BufWritePre * %s/\_s*\%$//e
+
 set list
 set noshowmode
 set number

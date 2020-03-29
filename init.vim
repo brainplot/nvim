@@ -1,5 +1,7 @@
 " vi: set ts=4 sw=4 expandtab:
 
+set runtimepath^=/usr/share/vim/vimfiles/
+
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'

@@ -34,11 +34,16 @@ let g:lightline = {
             \ },
             \ }
 
-" Remove trailing whitespaces
-autocmd BufWritePre * %s/\s\+$//e
+function! s:clean_up_whitespaces()
+    let cursorpos = getcurpos()
+    silent! %s/\_s*\%$//
+    silent! %s/\s\+$//
+    call setpos('.', cursorpos)
+endfunction
 
-" Remove trailing blank lines
-autocmd BufWritePre * %s/\_s*\%$//e
+" Strip out unwanted whitespaces
+autocmd BufWritePre * call s:clean_up_whitespaces()
+
 
 set list
 set noshowmode

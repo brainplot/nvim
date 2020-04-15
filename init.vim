@@ -11,11 +11,13 @@ function! s:clean_up_whitespaces()
     call setpos('.', cursorpos)
 endfunction
 
-" Strip out unwanted whitespaces
-autocmd BufWritePre * call s:clean_up_whitespaces()
-
-" Keybindings to quickly run the buffer being edited
-autocmd FileType python nnoremap <buffer> <F8> :w<CR>:exec '!python' shellescape(@%, 1)<CR>
+augroup custom
+    autocmd!
+    " Strip out unwanted whitespaces
+    autocmd BufWritePre * call s:clean_up_whitespaces()
+    " Keybindings to quickly run the buffer being edited
+    autocmd FileType python nnoremap <buffer> <F8> :w<CR>:exec '!python' shellescape(@%, 1)<CR>
+augroup end
 
 " Custom key mappings
 vnoremap <F9> :sort<CR>

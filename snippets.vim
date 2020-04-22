@@ -1,3 +1,5 @@
+" vi: set ts=4 sw=4 expandtab:
+
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 

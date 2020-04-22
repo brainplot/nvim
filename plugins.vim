@@ -1,3 +1,5 @@
+" vi: set ts=4 sw=4 expandtab:
+
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'honza/vim-snippets'

@@ -1,3 +1,5 @@
+" vi: set ts=4 sw=4 expandtab:
+
 " TextEdit might fail if hidden is not set.
 set hidden
 

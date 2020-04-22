@@ -7,6 +7,11 @@ let g:lightline = {
             \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
             \ },
             \ 'component_function': {
+            \   'cocstatus': 'coc#status',
             \   'gitbranch': 'gitbranch#name'
             \ },
             \ }
+
+augroup lightline
+    autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+augroup end

@@ -49,3 +49,10 @@ if executable('rg')
     set grepprg=rg\ --no-heading\ --vimgrep
     set grepformat=%f:%l:%c:%m
 endif
+
+if executable('fd')
+    let $FZF_DEFAULT_COMMAND = 'fd --type f'
+endif
+
+" <leader>s for Rg search
+noremap <leader>s :Rg<space>

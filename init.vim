@@ -1,16 +1,22 @@
 " vi: set ts=4 sw=4 expandtab:
 
-set runtimepath^=/usr/share/vim/vimfiles/
-
+set incsearch
 set list
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set noshowmode
 set number
 set relativenumber
+set runtimepath^=/usr/share/vim/vimfiles/
+set scrolloff=2
 set shiftwidth=0
+set sidescrolloff=4
 set splitright
 set tabstop=4
 
-if (has("termguicolors"))
+filetype plugin on
+syntax enable
+
+if has('termguicolors')
     set termguicolors
 endif
 
@@ -33,3 +39,5 @@ augroup end
 
 " Custom key mappings
 vnoremap <F9> :sort<CR>
+" Use <C-L> to clear the highlighting of :set hlsearch.
+nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>

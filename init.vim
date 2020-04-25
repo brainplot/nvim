@@ -1,5 +1,6 @@
 " vi: set ts=4 sw=4 expandtab:
 
+let mapleader = "\<Space>"
 set incsearch
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+

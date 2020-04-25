@@ -6,5 +6,6 @@
 		"--compile-commands-dir=build",
 		"--pch-storage=memory",
 		"-j=6"
-	]
+	],
+	"coc.preferences.formatOnSaveFiletypes": ["*"]
 }

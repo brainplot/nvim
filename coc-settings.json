@@ -7,5 +7,6 @@
 		"--pch-storage=memory",
 		"-j=6"
 	],
-	"coc.preferences.formatOnSaveFiletypes": ["*"]
+	"coc.preferences.formatOnSaveFiletypes": ["*"],
+	"python.formatting.provider": "yapf"
 }

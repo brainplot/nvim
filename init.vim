@@ -2,6 +2,18 @@
 
 set runtimepath^=/usr/share/vim/vimfiles/
 
+set list
+set noshowmode
+set number
+set relativenumber
+set shiftwidth=0
+set splitright
+set tabstop=4
+
+if (has("termguicolors"))
+    set termguicolors
+endif
+
 runtime! plugins.vim
 
 function! s:clean_up_whitespaces()
@@ -21,17 +33,3 @@ augroup end
 
 " Custom key mappings
 vnoremap <F9> :sort<CR>
-
-set list
-set noshowmode
-set number
-set relativenumber
-set shiftwidth=0
-set splitright
-set tabstop=4
-
-if (empty($TMUX))
-    if (has("termguicolors"))
-        set termguicolors
-    endif
-endif

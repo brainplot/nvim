@@ -2,6 +2,7 @@
 
 call plug#begin(stdpath('data') . '/plugged')
 
+Plug 'airblade/vim-rooter'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'

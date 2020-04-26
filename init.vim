@@ -5,7 +5,6 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set noshowmode
 set number
 set relativenumber
-set runtimepath^=/usr/share/vim/vimfiles/
 set scrolloff=2
 set shiftwidth=0
 set sidescrolloff=4

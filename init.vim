@@ -36,7 +36,7 @@ augroup custom
 augroup end
 
 " Custom key mappings
-vnoremap <F9> :sort<CR>
+vnoremap <silent> <F9> :sort<CR>
 " Use <C-L> to clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 

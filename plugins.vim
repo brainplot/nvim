@@ -10,6 +10,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rakr/vim-one'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
 
 call plug#end()

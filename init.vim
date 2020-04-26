@@ -56,3 +56,7 @@ endif
 
 " <leader>s for Rg search
 noremap <leader>s :Rg<space>
+
+" Quickly insert an empty new line without entering insert mode
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>

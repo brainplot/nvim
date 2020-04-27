@@ -1,7 +1,9 @@
 let mapleader = "\<Space>"
+set foldmethod=syntax
 set incsearch
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set nofoldenable
 set noshowmode
 set number
 set relativenumber

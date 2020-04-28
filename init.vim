@@ -12,6 +12,7 @@ set shiftwidth=0
 set sidescrolloff=4
 set splitright
 set tabstop=4
+set title
 set undofile
 set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,Thumbs.db,*.min.js,*.swp,*.exe
 

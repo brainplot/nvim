@@ -57,3 +57,5 @@ noremap <leader>s :Rg<space>
 " Quickly insert an empty new line without entering insert mode
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
+
+let g:netrw_list_hide = '\.git/$,\.hg/$,\.svn/$' " Hide VCS directories

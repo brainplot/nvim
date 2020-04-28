@@ -19,7 +19,6 @@ runtime! coc.vim
 
 let g:one_allow_italics=1
 colorscheme one
-set background=dark
 
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)

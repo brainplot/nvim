@@ -16,6 +16,12 @@ set title
 set undofile
 set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,Thumbs.db,*.min.js,*.swp,*.exe
 
+if has('win32')
+    set path=.\**
+else
+    set path=$PWD/**
+endif
+
 filetype plugin on
 syntax enable
 

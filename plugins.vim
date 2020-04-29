@@ -1,3 +1,4 @@
+" vim: set foldmethod=marker foldenable:
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'airblade/vim-rooter'
@@ -17,8 +18,13 @@ call plug#end()
 
 runtime! coc.vim
 
+"{{{ colorscheme
+
 let g:one_allow_italics=1
 colorscheme one
+
+"}}}
+"{{{ coc-snippets
 
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
@@ -34,6 +40,9 @@ let g:coc_snippet_prev = '<C-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+"}}}
+"{{{ lightline
 
 let g:lightline = {
             \ 'colorscheme': 'one',
@@ -51,9 +60,14 @@ augroup lightline
     autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 augroup end
 
+"}}}
+"{{{ cpp-enhanced-highlight
+
 let g:cpp_class_decl_highlight = 1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_posix_standard = 1
+
+"}}}

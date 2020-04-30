@@ -23,7 +23,7 @@ else
     set path=$PWD/**
 endif
 
-filetype plugin on
+filetype plugin indent on
 syntax enable
 
 if has('termguicolors')

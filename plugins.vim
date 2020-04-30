@@ -2,7 +2,7 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'airblade/vim-rooter'
-Plug 'cespare/vim-toml'
+Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'georgewitteman/vim-fish', { 'for': 'fish' }
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'

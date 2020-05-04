@@ -1,2 +1,4 @@
 .netrwhist
 autoload/
+# Nvim logs produced when following HEAD
+.nvimlog

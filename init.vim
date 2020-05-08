@@ -72,4 +72,7 @@ noremap <leader>s :Rg<space>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
+" Toggle 'wrap' option
+nnoremap <silent> <Leader>w :set wrap!<CR>
+
 let g:netrw_list_hide = '\.git/$,\.hg/$,\.svn/$' " Hide VCS directories

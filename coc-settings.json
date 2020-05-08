@@ -1,5 +1,5 @@
 {
-	"rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
+	"rust-analyzer.serverPath": "rust-analyzer",
 	"clangd.arguments": [
 		"--background-index",
 		"--compile-commands-dir=build",

@@ -18,7 +18,7 @@ set splitright
 set tabstop=4
 set title
 set undofile
-set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,Thumbs.db,*.min.js,*.swp,*.exe
+set wildignore=.hg,.svn,.git,*~,*.png,*.jpg,*.gif,Thumbs.db,*.min.js,*.swp,*.exe
 
 if has('win32')
     set path=.\**

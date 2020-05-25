@@ -20,11 +20,7 @@ set title
 set undofile
 set wildignore=.hg,.svn,.git,*~,*.png,*.jpg,*.gif,Thumbs.db,*.min.js,*.swp,*.exe
 
-if has('win32')
-    set path=.\**
-else
-    set path=$PWD/**
-endif
+set path=**
 
 filetype plugin indent on
 syntax enable

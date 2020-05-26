@@ -1,0 +1,12 @@
+###################
+#  Rust Snippets  #
+###################
+
+snippet epln "eprintln!"
+	eprintln!("${1}");
+snippet epln, "eprintln! with format param"
+	eprintln!("${1}{${2}}", ${3});
+snippet ok "construct an Ok value"
+	Ok(${1:()})$0
+snippet uns "call an unsafe funtion"
+	unsafe { ${1:be_careful}($2) }$0

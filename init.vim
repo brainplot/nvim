@@ -1,4 +1,5 @@
 let mapleader = "\<Space>"
+set completeopt=menuone,noinsert,noselect
 set foldmethod=syntax
 set formatoptions-=o
 set hidden
@@ -14,6 +15,7 @@ set relativenumber
 set scrolloff=2
 set shiftwidth=0
 set sidescrolloff=4
+set signcolumn=yes
 set splitright
 set tabstop=4
 set title

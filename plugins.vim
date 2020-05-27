@@ -103,9 +103,9 @@ inoremap <silent> <expr> <CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
 "}}}
 "{{{ ultisnips
 
-let g:UltiSnipsExpandTrigger      = "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger   = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger  = "<s-tab>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit = "context"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 

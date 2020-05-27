@@ -8,5 +8,7 @@ snippet epln, "eprintln! with format param"
 	eprintln!("${1}{${2}}", ${3});
 snippet ok "construct an Ok value"
 	Ok(${1:()})$0
+snippet some "construct a Some value"
+	Some(${1:value})$0
 snippet uns "call an unsafe funtion"
 	unsafe { ${1:be_careful}($2) }$0

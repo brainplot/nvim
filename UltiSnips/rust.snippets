@@ -3,12 +3,21 @@
 ###################
 
 snippet epln "eprintln!"
-	eprintln!("${1}");
+eprintln!("${1}");
+endsnippet
+
 snippet epln, "eprintln! with format param"
-	eprintln!("${1}{${2}}", ${3});
+eprintln!("${1}{${2}}", ${3});
+endsnippet
+
 snippet ok "construct an Ok value"
-	Ok(${1:()})$0
+Ok(${1:()})$0
+endsnippet
+
 snippet some "construct a Some value"
-	Some(${1:value})$0
+Some(${1:value})$0
+endsnippet
+
 snippet uns "call an unsafe funtion"
-	unsafe { ${1:be_careful}($2) }$0
+unsafe { ${1:be_careful}($2) }$0
+endsnippet

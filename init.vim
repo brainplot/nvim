@@ -54,7 +54,7 @@ endfunction
 augroup custom
     autocmd!
     " Strip out unwanted whitespaces
-    autocmd BufWritePre * call s:clean_up_whitespaces()
+    autocmd BufWritePre * call <SID>clean_up_whitespaces()
     " Don't automatically insert comments
     autocmd FileType * set formatoptions-=c formatoptions-=r formatoptions-=o
 augroup end

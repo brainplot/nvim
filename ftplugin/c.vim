@@ -1,1 +1,1 @@
-cpp.vim
+set colorcolumn=100

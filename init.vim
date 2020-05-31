@@ -71,9 +71,6 @@ vnoremap <silent> <F9> :sort<CR>
 " Use <C-L> to clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
-" <leader>s for Rg search
-noremap <leader>s :Rg<space>
-
 " Quickly insert an empty new line without entering insert mode
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
@@ -213,5 +210,6 @@ if executable('fd')
 endif
 
 nnoremap <leader>F :FZF<CR>
+nnoremap <leader>r :Rg<space>
 
 " }}}

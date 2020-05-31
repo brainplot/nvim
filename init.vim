@@ -212,4 +212,6 @@ if executable('fd')
     let $FZF_DEFAULT_COMMAND = 'fd --type f'
 endif
 
+nnoremap <leader>F :FZF<CR>
+
 " }}}

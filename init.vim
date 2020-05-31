@@ -51,6 +51,10 @@ function! s:clean_up_whitespaces()
     call setpos('.', cursorpos)
 endfunction
 
+function! s:optimal_split()
+    return winwidth(0) <= 2 * (&tw ? &tw : 80) ? 'split' : 'vsplit'
+endfunction
+
 augroup custom
     autocmd!
     " Strip out unwanted whitespaces
@@ -76,6 +80,11 @@ nnoremap <Leader>O O<Esc>
 
 " Toggle 'wrap' option
 nnoremap <silent> <Leader>w :set wrap!<CR>
+
+" Open vimrc in a new split, picked based on current terminal size
+nnoremap <leader>v :exe <SID>optimal_split() . fnameescape($MYVIMRC)<CR>
+" Open vimrc on top of the current buffer
+nnoremap <leader>V :exe 'edit' . fnameescape($MYVIMRC)<CR>
 
 " }}} Key Mappings
 " Netrw {{{

@@ -1,6 +1,5 @@
-augroup disable_last_position_jump
-    autocmd!
-    autocmd BufWinEnter <buffer> execute 'normal! gg0'
-augroup end
-
 set colorcolumn=50,72
+
+if empty(getline(1))
+    call setpos('.', [0, 1, 1, 0])
+endif

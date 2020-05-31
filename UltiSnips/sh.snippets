@@ -1,0 +1,20 @@
+####################
+#  Shell snippets  #
+####################
+
+snippet fun-die "die() {...}" b
+die() {
+	>&2 echo "\$1"
+	exit "\$\{2:-1\}"
+}
+$0
+endsnippet
+
+snippet die "handle error" m
+|| die "${1:error_message}" ${2:1}
+$0
+endsnippet
+
+snippet com "$(...)" i
+\$($1)$0
+endsnippet

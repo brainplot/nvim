@@ -210,6 +210,7 @@ if executable('fd')
 endif
 
 nnoremap <leader>F :FZF<CR>
+nnoremap <leader>f :GFiles<CR>
 nnoremap <leader>r :Rg<space>
 
 " }}}

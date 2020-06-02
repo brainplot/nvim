@@ -97,13 +97,13 @@ Plug 'airblade/vim-rooter'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'davidgranstrom/nvim-markdown-preview'
 Plug 'itchyny/lightline.vim'
-Plug 'itchyny/vim-gitbranch'
 Plug 'junegunn/fzf.vim'
 Plug 'neovim/nvim-lsp'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'rakr/vim-one'
 Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
 
@@ -136,7 +136,7 @@ let g:lightline = {
             \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
             \ },
             \ 'component_function': {
-            \   'gitbranch': 'gitbranch#name'
+            \   'gitbranch': 'FugitiveHead'
             \ },
             \ }
 

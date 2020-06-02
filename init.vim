@@ -101,6 +101,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neovim/nvim-lsp'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'rakr/vim-one'
+Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
@@ -191,7 +192,6 @@ augroup ncm2
 augroup end
 
 inoremap <silent> <expr> <TAB> ncm2_ultisnips#expand_or("\<TAB>", 'n')
-inoremap <silent> <expr> <CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
 
 " }}}
 " ultisnips {{{
@@ -212,5 +212,14 @@ endif
 nnoremap <leader>F :FZF<CR>
 nnoremap <leader>f :GFiles<CR>
 nnoremap <leader>r :Rg<space>
+
+" }}}
+" pear-tree {{{
+
+let g:pear_tree_map_special_keys = 0
+
+imap <silent> <expr> <CR> pumvisible() ? "\<C-y>\<Plug>(PearTreeExpand)" : "\<Plug>(PearTreeExpand)"
+imap <silent> <expr> <ESC> pumvisible() ? "\<C-y>\<Plug>(PearTreeFinishExpansion)" : "\<Plug>(PearTreeFinishExpansion)"
+imap <BS> <Plug>(PearTreeBackspace)
 
 " }}}

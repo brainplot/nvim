@@ -95,6 +95,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'airblade/vim-rooter'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'davidgranstrom/nvim-markdown-preview'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'junegunn/fzf.vim'

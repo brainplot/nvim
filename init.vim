@@ -96,6 +96,10 @@ let g:netrw_list_hide = '\.git/$,\.hg/$,\.svn/$' " Hide VCS directories
 " }}} Netrw
 " Plugins {{{
 
+if !has('nvim')
+    finish
+endif
+
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'airblade/vim-rooter'

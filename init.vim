@@ -15,7 +15,6 @@ set nofoldenable
 set noshowmode
 set nowritebackup
 set number
-set path=**
 set relativenumber
 set scrolloff=2
 set shiftwidth=0
@@ -27,6 +26,12 @@ set tabstop=4
 set title
 set undofile
 set wildignore=.hg,.svn,.git,*~,*.png,*.jpg,*.gif,Thumbs.db,*.min.js,*.swp,*.exe
+
+if has('win32')
+    set path=.\**
+else
+    set path=$PWD/**
+endif
 
 filetype plugin indent on
 syntax enable

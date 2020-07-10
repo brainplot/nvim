@@ -106,7 +106,6 @@ Plug 'airblade/vim-rooter'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'davidgranstrom/nvim-markdown-preview'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf.vim'
 Plug 'neovim/nvim-lsp'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'rakr/vim-one'
@@ -115,6 +114,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
+
+" fzf
+if has('win32')
+    " The Windows version of fzf doesn't ship with the vim plugin
+    Plug 'junegunn/fzf'
+endif
+Plug 'junegunn/fzf.vim'
 
 " Completion
 Plug 'ncm2/ncm2'

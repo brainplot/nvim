@@ -108,6 +108,7 @@ Plug 'davidgranstrom/nvim-markdown-preview'
 Plug 'itchyny/lightline.vim'
 Plug 'neovim/nvim-lsp'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
+Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 Plug 'rakr/vim-one'
 Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-commentary'

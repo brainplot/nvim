@@ -116,11 +116,13 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
 
 " fzf
-if has('win32')
-    " The Windows version of fzf doesn't ship with the vim plugin
-    Plug 'junegunn/fzf'
+if executable('fzf')
+    if has('win32')
+        " The Windows version of fzf doesn't ship with the vim plugin
+        Plug 'junegunn/fzf'
+    endif
+    Plug 'junegunn/fzf.vim'
 endif
-Plug 'junegunn/fzf.vim'
 
 " Completion
 Plug 'ncm2/ncm2'
@@ -221,13 +223,15 @@ let g:UltiSnipsRemoveSelectModeMappings = 0
 " }}}
 " fzf.vim {{{
 
-if executable('fd')
-    let $FZF_DEFAULT_COMMAND = 'fd --type f'
-endif
+if executable('fzf')
+    if executable('fd')
+        let $FZF_DEFAULT_COMMAND = 'fd --type f'
+    endif
 
-nnoremap <leader>F :FZF<CR>
-nnoremap <leader>f :GFiles<CR>
-nnoremap <leader>r :Rg<space>
+    nnoremap <leader>F :FZF<CR>
+    nnoremap <leader>f :GFiles<CR>
+    nnoremap <leader>r :Rg<space>
+endif
 
 " }}}
 " pear-tree {{{

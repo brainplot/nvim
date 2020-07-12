@@ -104,7 +104,6 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'airblade/vim-rooter'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
-Plug 'davidgranstrom/nvim-markdown-preview'
 Plug 'itchyny/lightline.vim'
 Plug 'neovim/nvim-lsp'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }

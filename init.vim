@@ -20,7 +20,6 @@ set scrolloff=2
 set shiftwidth=0
 set shortmess+=c
 set sidescrolloff=4
-set signcolumn=yes
 set splitright
 set tabstop=4
 set title
@@ -168,6 +167,8 @@ let g:cpp_posix_standard = 1
 
 " }}}
 " nvim-lsp {{{
+
+set signcolumn=yes
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>

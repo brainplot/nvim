@@ -1,0 +1,13 @@
+#########################
+#  PowerShell Snippets  #
+#########################
+
+snippet foreach "foreach loop" b
+foreach ($${1:iterator} in $${2:collection}) {
+	${3:statement}
+}
+endsnippet
+
+snippet echo "Write-Ouput"
+Write-Output $0
+endsnippet

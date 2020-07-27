@@ -13,6 +13,7 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set nobackup
 set nofoldenable
 set noshowmode
+set nowrap
 set nowritebackup
 set number
 set relativenumber

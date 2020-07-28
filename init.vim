@@ -110,7 +110,6 @@ Plug 'neovim/nvim-lsp'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 Plug 'rakr/vim-one'
-Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
@@ -234,14 +233,5 @@ if executable('fzf')
     nnoremap <leader>f :GFiles<CR>
     nnoremap <leader>r :Rg<space>
 endif
-
-" }}}
-" pear-tree {{{
-
-let g:pear_tree_map_special_keys = 0
-
-imap <silent> <expr> <CR> pumvisible() ? "\<C-y>\<Plug>(PearTreeExpand)" : "\<Plug>(PearTreeExpand)"
-imap <silent> <expr> <ESC> pumvisible() ? "\<C-y>\<Plug>(PearTreeFinishExpansion)" : "\<Plug>(PearTreeFinishExpansion)"
-imap <BS> <Plug>(PearTreeBackspace)
 
 " }}}

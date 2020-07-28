@@ -84,9 +84,9 @@ nnoremap <Leader>O O<Esc>
 nnoremap <silent> <Leader>w :set wrap!<CR>
 
 " Open vimrc in a new split, picked based on current terminal size
-nnoremap <leader>v :exe <SID>optimal_split() . ' ' . fnameescape($MYVIMRC)<CR>
+nnoremap <silent> <leader>v :exe <SID>optimal_split() . ' ' . fnameescape($MYVIMRC)<CR>
 " Open vimrc on top of the current buffer
-nnoremap <leader>V :exe 'edit ' . fnameescape($MYVIMRC)<CR>
+nnoremap <silent> <leader>V :exe 'edit ' . fnameescape($MYVIMRC)<CR>
 
 " }}} Key Mappings
 " Netrw {{{

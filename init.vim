@@ -105,13 +105,13 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'airblade/vim-rooter'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
 Plug 'neovim/nvim-lsp'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 Plug 'rakr/vim-one'
 Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
 
@@ -153,7 +153,7 @@ let g:lightline = {
             \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
             \ },
             \ 'component_function': {
-            \   'gitbranch': 'FugitiveHead'
+            \   'gitbranch': 'gitbranch#name'
             \ },
             \ }
 

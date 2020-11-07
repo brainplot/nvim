@@ -123,19 +123,12 @@ if executable('fzf')
 endif
 
 " Language Server Protocol
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 
-" Completion
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
-Plug 'thomasfaingnaert/vim-lsp-snippets'
-Plug 'thomasfaingnaert/vim-lsp-ultisnips'
-
-" Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Snippet support
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
 call plug#end()
 
@@ -169,48 +162,72 @@ let g:cpp_member_variable_highlight = 1
 let g:cpp_posix_standard = 1
 
 " }}}
-" vim-lsp {{{
+" nvim-lsp {{{
 
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
-    nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
-    " refer to doc to add more commands
-endfunction
+lua << EOF
+    local nvim_lsp = require "nvim_lsp"
 
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
+    function init_lsp_buffer()
+        vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+        vim.wo.signcolumn = "yes"
+        require'completion'.on_attach()
+    end
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+    nvim_lsp.gopls.setup {
+        capabilities = capabilities,
+        cmd = {"gopls", "serve"},
+        settings = {
+            gopls = {
+                analyses = {
+                    unusedparams = true,
+                },
+                staticcheck = true,
+            },
+        },
+        on_attach = init_lsp_buffer
+    }
+
+    nvim_lsp.rust_analyzer.setup {
+        capabilities = capabilities,
+        on_attach = init_lsp_buffer
+    }
+EOF
 
 " }}}
-" ultisnips {{{
+" vim-vsnip {{{
 
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsEditSplit = "context"
-let g:UltiSnipsRemoveSelectModeMappings = 0
+" Mapping below is commented out because the Tab key has special handling due to completion-nvim
+" See the completion-nvim section
+"
+" imap <expr> <Tab>   vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<Tab>'
+smap <expr> <Tab>   vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
 " }}}
-" asyncomplete {{{
+" completion-nvim {{{
 
-" Ultisnips
-call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-            \ 'name': 'ultisnips',
-            \ 'whitelist': ['*'],
-            \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
-            \ }))
+let g:completion_enable_snippet = 'vim-vsnip'
+let g:completion_enable_auto_hover = 0
+
+let g:completion_confirm_key = ''
+imap <expr> <Tab>  pumvisible() ? complete_info()["selected"] != "-1" ?
+            \ "\<Plug>(completion_confirm_completion)"  :
+            \ vsnip#available(1) ? "\<c-e>\<Plug>(vsnip-expand-or-jump)" : "\<c-e>\<Tab>" :
+            \ vsnip#available(1) ? "\<Plug>(vsnip-expand-or-jump)" : "\<Tab>"
 
 " }}}
 " fzf.vim {{{

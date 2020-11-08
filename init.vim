@@ -106,6 +106,7 @@ Plug 'airblade/vim-rooter'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
+Plug 'luochen1990/rainbow'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 Plug 'rakr/vim-one'
@@ -243,5 +244,10 @@ if executable('fzf')
     nnoremap <leader>f :GFiles<CR>
     nnoremap <leader>r :Rg<space>
 endif
+
+" }}}
+" rainbow {{{
+
+let g:rainbow_active = 1
 
 " }}}

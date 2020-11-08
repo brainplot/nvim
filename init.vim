@@ -222,6 +222,7 @@ smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)'      : '<S-Ta
 
 let g:completion_enable_snippet = 'vim-vsnip'
 let g:completion_enable_auto_hover = 0
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 let g:completion_confirm_key = ''
 imap <expr> <Tab>  pumvisible() ? complete_info()["selected"] != "-1" ?

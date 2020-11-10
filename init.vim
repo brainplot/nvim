@@ -241,8 +241,8 @@ if executable('fzf')
         let $FZF_DEFAULT_COMMAND = 'fd --type f'
     endif
 
-    nnoremap <leader>F :FZF<CR>
-    nnoremap <leader>f :GFiles<CR>
+    nnoremap <leader>F :GFiles<CR>
+    nnoremap <leader>f :Files<CR>
     nnoremap <leader>r :Rg<space>
 endif
 

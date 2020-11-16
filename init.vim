@@ -176,7 +176,7 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 lua << EOF
-    local nvim_lsp = require "nvim_lsp"
+    local nvim_lsp = require "lspconfig"
 
     function init_lsp_buffer()
         vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"

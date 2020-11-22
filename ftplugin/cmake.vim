@@ -1,2 +1,2 @@
-set colorcolumn=80
-set expandtab
+setlocal colorcolumn=80
+setlocal expandtab

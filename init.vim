@@ -88,6 +88,10 @@ nnoremap <silent> <leader>v :exe <SID>optimal_split() . ' ' . fnameescape($MYVIM
 " Open vimrc on top of the current buffer
 nnoremap <silent> <leader>V :exe 'edit ' . fnameescape($MYVIMRC)<CR>
 
+" Switch between open buffers
+nnoremap <silent> <leader>j :bnext<CR>
+nnoremap <silent> <leader>k :bprev<CR>
+
 " }}} Key Mappings
 " Netrw {{{
 
@@ -242,6 +246,7 @@ if executable('fzf')
 
     nnoremap <leader>F :GFiles<CR>
     nnoremap <leader>f :Files<CR>
+    nnoremap <leader>b :Buffers<CR>
     nnoremap <leader>r :Rg<space>
 endif
 

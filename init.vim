@@ -35,7 +35,6 @@ endif
 
 filetype plugin indent on
 syntax enable
-colorscheme darkblue " Set default colorscheme in case of no plugins
 
 if has('termguicolors')
     set termguicolors

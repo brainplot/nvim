@@ -251,3 +251,8 @@ if executable('fzf')
 endif
 
 " }}}
+" vim-vsnip {{{
+
+let g:vsnip_snippet_dir = stdpath('config') . '/snippets'
+
+" }}}

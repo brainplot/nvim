@@ -118,7 +118,7 @@ Plug 'tpope/vim-surround'
 
 " fzf
 if executable('fzf')
-    if has('win32')
+    if has('macunix') || has('win32')
         " The Windows version of fzf doesn't ship with the vim plugin
         Plug 'junegunn/fzf'
     endif

@@ -67,6 +67,13 @@ augroup custom
     autocmd FileType * set formatoptions-=c formatoptions-=r formatoptions-=o
 augroup end
 
+if has('nvim')
+    augroup custom_nvim
+        " Use completion-nvim in every buffer
+        autocmd BufEnter * lua require('completion').on_attach()
+    augroup end
+endif
+
 " }}} Function and Autogroups
 " Key Mappings {{{
 

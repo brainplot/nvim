@@ -167,6 +167,8 @@ let g:cpp_posix_standard = 1
 " }}}
 " nvim-lsp {{{
 
+lua require('lsp')
+
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
@@ -177,38 +179,6 @@ nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-
-lua << EOF
-    local nvim_lsp = require "lspconfig"
-
-    function init_lsp_buffer()
-        vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-        vim.wo.signcolumn = "yes"
-        require'completion'.on_attach()
-    end
-
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-    nvim_lsp.gopls.setup {
-        capabilities = capabilities,
-        cmd = {"gopls", "serve"},
-        settings = {
-            gopls = {
-                analyses = {
-                    unusedparams = true,
-                },
-                staticcheck = true,
-            },
-        },
-        on_attach = init_lsp_buffer
-    }
-
-    nvim_lsp.rust_analyzer.setup {
-        capabilities = capabilities,
-        on_attach = init_lsp_buffer
-    }
-EOF
 
 " }}}
 " vim-vsnip {{{

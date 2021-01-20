@@ -1,0 +1,42 @@
+{
+	"eprintln!": {
+		"scope": "rust",
+		"prefix": "epln",
+		"body": "eprintln!(\"$1\");"
+	},
+	"eprintln! with format param": {
+		"scope": "rust",
+		"prefix": "epln,",
+		"body": "eprintln!(\"$1{$2}$3\", $4);"
+	},
+	"Ok(..)": {
+		"scope": "rust",
+		"prefix": "ok",
+		"body": "Ok(${1:()})"
+	},
+	"Some(..)": {
+		"scope": "rust",
+		"prefix": "some",
+		"body": "Some($1)"
+	},
+	"Unsafe expression": {
+		"scope": "rust",
+		"prefix": "unse",
+		"body": "unsafe { $1 }${2:;}"
+	},
+	"Unsafe block": {
+		"scope": "rust",
+		"prefix": "unsb",
+		"body": "unsafe {\n\t$1\n}${2:;}"
+	},
+	"Test function": {
+		"scope": "rust",
+		"prefix": "testf",
+		"body": "#[test]\nfn $1() {\n\t$0\n}"
+	},
+	"dbg!(..)": {
+		"scope": "rust",
+		"prefix": "dbg",
+		"body": "dbg!(${1:$TM_SELECTED_TEXT})"
+	}
+}

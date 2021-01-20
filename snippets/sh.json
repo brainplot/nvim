@@ -1,0 +1,17 @@
+{
+	"die() {...}": {
+		"scope": "sh",
+		"prefix": "fun-die",
+		"body": "die() {\n\t>&2 echo \"$1\"\n\texit 1\n}"
+	},
+	"handle error": {
+		"scope": "sh",
+		"prefix": "die",
+		"body": "|| die \"${1:error message}\""
+	},
+	"$(..)": {
+		"scope": "sh",
+		"prefix": "com",
+		"body": "\\$($1)$0"
+	}
+}

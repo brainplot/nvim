@@ -1,0 +1,12 @@
+{
+	"foreach": {
+		"scope": "ps1",
+		"prefix": "foreach",
+		"body": "foreach (\\$${1:iterator} in \\$${2:collection}) {\n\t$0\n}"
+	},
+	"Write-Output": {
+		"scope": "ps1",
+		"prefix": "echo",
+		"body": "Write-Output $0"
+	}
+}

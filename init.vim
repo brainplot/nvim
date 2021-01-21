@@ -77,8 +77,6 @@ endif
 " }}} Function and Autogroups
 " Key Mappings {{{
 
-vnoremap <silent> <F9> :sort<CR>
-
 " Use <C-L> to clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
@@ -97,6 +95,9 @@ nnoremap <silent> <leader>V :exe 'edit ' . fnameescape($MYVIMRC)<CR>
 " Switch between open buffers
 nnoremap <silent> <leader>j :bnext<CR>
 nnoremap <silent> <leader>k :bprev<CR>
+
+" Sort selected lines
+vnoremap <silent> <leader>s :sort<CR>
 
 " }}} Key Mappings
 " Netrw {{{

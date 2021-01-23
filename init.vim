@@ -99,6 +99,9 @@ nnoremap <silent> <leader>k :bprev<CR>
 " Sort selected lines
 vnoremap <silent> <leader>s :sort<CR>
 
+" Run current file
+nnoremap <leader>x :!"%:p"<Enter>
+
 " }}} Key Mappings
 " Netrw {{{
 

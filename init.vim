@@ -71,6 +71,7 @@ if has('nvim')
     augroup custom_nvim
         " Use completion-nvim in every buffer
         autocmd BufEnter * lua require('completion').on_attach()
+        autocmd BufNewFile *.* silent! execute '0r '.stdpath('config').'/templates/skeleton.'.expand("<afile>:e")
     augroup end
 endif
 

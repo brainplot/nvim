@@ -119,6 +119,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'airblade/vim-rooter'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'hashivim/vim-terraform'
 Plug 'itchyny/lightline.vim'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
@@ -237,5 +238,11 @@ endif
 " vim-vsnip {{{
 
 let g:vsnip_snippet_dir = stdpath('config') . '/snippets'
+
+" }}}
+" vim-terraform {{{
+
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
 
 " }}}

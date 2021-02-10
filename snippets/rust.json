@@ -1,4 +1,14 @@
 {
+	"println!": {
+		"scope": "rust",
+		"prefix": "pln",
+		"body": "println!(\"$1\");"
+	},
+	"println! with format param": {
+		"scope": "rust",
+		"prefix": "pln,",
+		"body": "println!(\"$1{$2}$3\", $4);"
+	},
 	"eprintln!": {
 		"scope": "rust",
 		"prefix": "epln",

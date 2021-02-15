@@ -26,3 +26,8 @@ nvim_lsp.rust_analyzer.setup {
 	capabilities = capabilities,
 	on_attach = init_lsp_buffer
 }
+
+nvim_lsp.terraformls.setup {
+	capabilities = capabilities,
+	on_attach = init_lsp_buffer
+}

@@ -4,7 +4,6 @@
 
 let mapleader = "\<Space>"
 set completeopt=menuone,noinsert,noselect
-set fileformat=unix
 set foldmethod=syntax
 set formatoptions-=o
 set hidden

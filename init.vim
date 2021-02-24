@@ -125,6 +125,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 Plug 'rakr/vim-one'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
@@ -245,5 +246,10 @@ let g:vsnip_snippet_dir = stdpath('config') . '/snippets'
 
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
+
+" }}}
+" rust.vim {{{
+
+let g:rustfmt_autosave = 1
 
 " }}}

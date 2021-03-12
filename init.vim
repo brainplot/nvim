@@ -253,3 +253,8 @@ let g:terraform_fmt_on_save=1
 let g:rustfmt_autosave = 1
 
 " }}}
+" vim-rooter {{{
+
+let g:rooter_silent_chdir = 1
+
+" }}}

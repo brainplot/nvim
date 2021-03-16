@@ -36,7 +36,7 @@ endif
 filetype plugin indent on
 syntax enable
 
-if has('termguicolors')
+if has('nvim') && has('termguicolors')
     set termguicolors
 endif
 

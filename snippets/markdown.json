@@ -1,0 +1,7 @@
+{
+	"![desc](url)": {
+		"scope": "markdown",
+		"prefix": "img",
+		"body": "![$1]($2)"
+	}
+}

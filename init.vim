@@ -103,6 +103,9 @@ vnoremap <silent> <leader>s :sort<CR>
 " Run current file
 nnoremap <leader>x :!"%:p"<Enter>
 
+" Place current file in the system clipboard
+nnoremap <leader>y :%y+<Enter>
+
 " }}} Key Mappings
 " Netrw {{{
 

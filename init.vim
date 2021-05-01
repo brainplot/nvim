@@ -48,20 +48,20 @@ endif
 " }}} General Options
 " Function and Autogroups {{{
 
-function! s:clean_up_whitespaces()
+function! s:trimwhitespaces()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfunction
 
-function! s:optimal_split()
+function! s:optimalsplit()
     return winwidth(0) <= 2 * (&tw ? &tw : 80) ? 'split' : 'vsplit'
 endfunction
 
 augroup custom
     autocmd!
     " Strip out unwanted whitespaces
-    autocmd BufWritePre * call <SID>clean_up_whitespaces()
+    autocmd BufWritePre * call <SID>trimwhitespaces()
     " Don't automatically insert comments
     autocmd FileType * set formatoptions-=c formatoptions-=r formatoptions-=o
 augroup end
@@ -88,7 +88,7 @@ nnoremap <Leader>O O<Esc>
 nnoremap <silent> <Leader>w :set wrap!<CR>
 
 " Open vimrc in a new split, picked based on current terminal size
-nnoremap <silent> <leader>v :exe <SID>optimal_split() . ' ' . fnameescape($MYVIMRC)<CR>
+nnoremap <silent> <leader>v :exe <SID>optimalsplit() . ' ' . fnameescape($MYVIMRC)<CR>
 " Open vimrc on top of the current buffer
 nnoremap <silent> <leader>V :exe 'edit ' . fnameescape($MYVIMRC)<CR>
 

@@ -49,10 +49,9 @@ endif
 " Function and Autogroups {{{
 
 function! s:clean_up_whitespaces()
-    let cursorpos = getcurpos()
-    silent! %s/\_s*\%$//
-    silent! %s/\s\+$//
-    call setpos('.', cursorpos)
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
 endfunction
 
 function! s:optimal_split()

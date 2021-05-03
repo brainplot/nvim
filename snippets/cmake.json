@@ -1,6 +1,5 @@
 {
 	"Log variable": {
-		"scope": "cmake",
 		"prefix": "dbg",
 		"body": "message(NOTICE \"${1:$TM_SELECTED_TEXT} = \\${$1}\")"
 	}

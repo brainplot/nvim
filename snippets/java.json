@@ -1,0 +1,14 @@
+{
+	"println": {
+		"prefix": "pln",
+		"body": "System.out.println($1);"
+	},
+	"main()": {
+		"prefix": "psvm",
+		"body": "public static void main(String[] args) {\n\t$0\n}"
+	},
+	"class": {
+		"prefix": "cls",
+		"body": "class $TM_FILENAME_BASE {\n\t$0\n}"
+	}
+}

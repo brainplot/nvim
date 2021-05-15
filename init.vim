@@ -50,6 +50,7 @@ endif
 
 function! s:trimwhitespaces()
     let l:save = winsaveview()
+    keeppatterns %s/\_s*\%$//e
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfunction

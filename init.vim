@@ -126,6 +126,7 @@ Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'hashivim/vim-terraform'
 Plug 'itchyny/lightline.vim'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 Plug 'rakr/vim-one'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }

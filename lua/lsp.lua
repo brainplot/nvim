@@ -1,6 +1,6 @@
 local nvim_lsp = require('lspconfig')
 
-function init_lsp_buffer()
+function on_attach()
 	vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 	vim.wo.signcolumn = 'yes'
 end
@@ -19,12 +19,12 @@ nvim_lsp.gopls.setup {
 			staticcheck = true,
 		},
 	},
-	on_attach = init_lsp_buffer
+	on_attach = on_attach
 }
 
 nvim_lsp.rust_analyzer.setup {
 	capabilities = capabilities,
-	on_attach = init_lsp_buffer,
+	on_attach = on_attach,
 	settings = {
 		['rust-analyzer'] = {
 			assist = {
@@ -44,5 +44,5 @@ nvim_lsp.rust_analyzer.setup {
 
 nvim_lsp.terraformls.setup {
 	capabilities = capabilities,
-	on_attach = init_lsp_buffer
+	on_attach = on_attach
 }

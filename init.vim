@@ -59,6 +59,10 @@ function! s:optimalsplit()
     return winwidth(0) <= 2 * (&tw ? &tw : 80) ? 'split' : 'vsplit'
 endfunction
 
+function! s:toggle_relativenumber()
+    set relativenumber!
+endfunction
+
 augroup custom
     autocmd!
     " Strip out unwanted whitespaces
@@ -99,6 +103,9 @@ nnoremap <silent> <leader>k :bprev<CR>
 
 " Sort selected lines
 vnoremap <silent> <leader>s :sort<CR>
+
+" Toggle between relativenumber and norelativenumber
+nnoremap <silent> <leader>n :call <SID>toggle_relativenumber()<CR>
 
 " Run current file
 nnoremap <leader>x :!"%:p"<Enter>

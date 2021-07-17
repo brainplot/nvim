@@ -59,7 +59,7 @@ function! s:optimalsplit()
     return winwidth(0) <= 2 * (&tw ? &tw : 80) ? 'split' : 'vsplit'
 endfunction
 
-function! s:toggle_relativenumber()
+function! s:togglerelativenumber()
     set relativenumber!
 endfunction
 
@@ -105,7 +105,7 @@ nnoremap <silent> <leader>k :bprev<CR>
 vnoremap <silent> <leader>s :sort<CR>
 
 " Toggle between relativenumber and norelativenumber
-nnoremap <silent> <leader>n :call <SID>toggle_relativenumber()<CR>
+nnoremap <silent> <leader>n :call <SID>togglerelativenumber()<CR>
 
 " Run current file
 nnoremap <leader>x :!"%:p"<Enter>

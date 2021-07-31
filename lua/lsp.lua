@@ -29,7 +29,6 @@ nvim_lsp.rust_analyzer.setup {
 		['rust-analyzer'] = {
 			assist = {
 				importMergeBehavior = 'last',
-				importPrefix = 'by_self',
 			},
 			cargo = {
 				loadOutDirsFromCheck = true,

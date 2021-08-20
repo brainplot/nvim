@@ -2,31 +2,34 @@
 
 " General Options {{{
 
-let mapleader = "\<Space>"
-set completeopt=menuone,noinsert,noselect
-set foldmethod=syntax
-set formatoptions-=o
-set hidden
-set incsearch
-set list
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-set nobackup
-set nofoldenable
-set noshowmode
-set nowrap
-set nowritebackup
-set number
-set relativenumber
-set scrolloff=2
-set shiftwidth=0
-set shortmess+=c
-set sidescrolloff=4
-set splitbelow
-set splitright
-set tabstop=4
-set title
-set undofile
-set wildignore=.hg,.svn,.git,*~,*.png,*.jpg,*.gif,Thumbs.db,*.min.js,*.swp,*.exe
+lua << EOF
+-- TODO Change " " to "<Space>"
+vim.g.mapleader = " "
+vim.opt.completeopt = { 'menuone', 'noinsert', 'noselect' }
+vim.opt.foldmethod = 'syntax'
+vim.opt.formatoptions:remove { 'o' }
+vim.opt.hidden = true
+vim.opt.incsearch = true
+vim.opt.list = true
+vim.opt.listchars = { tab = '> ', trail = '-', extends = '>', precedes = '<', nbsp = '+' }
+vim.opt.backup = false
+vim.opt.foldenable = false
+vim.opt.showmode = false
+vim.opt.wrap = false
+vim.opt.writebackup = false
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 2
+vim.opt.shiftwidth = 0
+vim.opt.shortmess:append 'c'
+vim.opt.sidescrolloff = 4
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.tabstop = 4
+vim.opt.title = true
+vim.opt.undofile = true
+vim.opt.wildignore = { '.hg', '.svn', '.git', '*~', '*.png', '*.jpg', '*.gif', 'Thumbs.db', '*.min.js', '*.swp', '*.exe' }
+EOF
 
 if has('win32')
     set path=.\**
@@ -131,10 +134,8 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'airblade/vim-rooter'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
-Plug 'chr4/nginx.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'itchyny/lightline.vim'
-Plug 'mattn/vim-gomod'
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
@@ -144,7 +145,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
-Plug 'tsandall/vim-rego'
 
 " fzf
 if executable('fzf')
@@ -239,7 +239,7 @@ imap <expr> <Tab>  pumvisible() ? complete_info()["selected"] != "-1" ?
 
 if executable('fzf')
     if executable('fd')
-        let $FZF_DEFAULT_COMMAND = 'fd -tf -H'
+        let $FZF_DEFAULT_COMMAND = 'fd -tf'
     endif
 
     nnoremap <leader>F :GFiles<CR>

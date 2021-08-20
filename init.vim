@@ -29,13 +29,13 @@ vim.opt.tabstop = 4
 vim.opt.title = true
 vim.opt.undofile = true
 vim.opt.wildignore = { '.hg', '.svn', '.git', '*~', '*.png', '*.jpg', '*.gif', 'Thumbs.db', '*.min.js', '*.swp', '*.exe' }
-EOF
 
-if has('win32')
-    set path=.\**
+if vim.fn.has('win32') == 1 then
+    vim.opt.path = '.\\**'
 else
-    set path=$PWD/**
-endif
+    vim.opt.path = vim.fn.getcwd() .. '/**'
+end
+EOF
 
 filetype plugin indent on
 syntax enable

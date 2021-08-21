@@ -35,19 +35,21 @@ if vim.fn.has('win32') == 1 then
 else
     vim.opt.path = vim.fn.getcwd() .. '/**'
 end
+
+vim.cmd([[
+    filetype plugin indent on
+    syntax enable
+]])
+
+if vim.fn.has('termguicolors') then
+    vim.opt.termguicolors = true
+end
+
+if vim.fn.executable('rg') then
+    vim.opt.grepprg = 'rg --no-heading --vimgrep'
+    vim.opt.grepformat = '%f:%l:%c:%m'
+end
 EOF
-
-filetype plugin indent on
-syntax enable
-
-if has('nvim') && has('termguicolors')
-    set termguicolors
-endif
-
-if executable('rg')
-    set grepprg=rg\ --no-heading\ --vimgrep
-    set grepformat=%f:%l:%c:%m
-endif
 
 " }}} General Options
 " Function and Autogroups {{{

@@ -21,6 +21,7 @@ set scrolloff=2
 set shiftwidth=0
 set shortmess+=c
 set sidescrolloff=4
+set splitbelow
 set splitright
 set tabstop=4
 set title

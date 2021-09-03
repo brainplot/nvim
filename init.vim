@@ -237,7 +237,7 @@ imap <expr> <Tab>  pumvisible() ? complete_info()["selected"] != "-1" ?
 
 if executable('fzf')
     if executable('fd')
-        let $FZF_DEFAULT_COMMAND = 'fd -tf'
+        let $FZF_DEFAULT_COMMAND = 'fd -tf -H'
     endif
 
     nnoremap <leader>F :GFiles<CR>

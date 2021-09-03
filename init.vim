@@ -131,6 +131,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'airblade/vim-rooter'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'chr4/nginx.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'itchyny/lightline.vim'
 Plug 'mattn/vim-gomod'

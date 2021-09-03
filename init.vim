@@ -144,6 +144,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
+Plug 'tsandall/vim-rego'
 
 " fzf
 if executable('fzf')

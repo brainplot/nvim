@@ -55,20 +55,6 @@ EOF
 " Functions and Autogroups {{{
 
 lua << EOF
-local function optimalsplit()
-    local ww = vim.fn.winwidth(0)
-    local tw = vim.opt.textwidth:get() or 80
-    if (ww <= 2 * tw) then
-        return 'split'
-    else
-        return 'vsplit'
-    end
-end
-
-local function togglerelativenumber()
-    vim.opt.relativenumber = not vim.opt.relativenumber:get()
-end
-
 vim.cmd([[
 function! TrimWhitespaces()
     let l:state = winsaveview()
@@ -95,32 +81,32 @@ EOF
 " }}} Functions and Autogroups
 " Key Mappings {{{
 
-" Use <C-L> to clear the highlighting of :set hlsearch.
-nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+lua << EOF
+-- Use <C-L> to clear the highlighting of :set hlsearch.
+vim.api.nvim_set_keymap('n', '<C-L>', '<Cmd>lua require("buffer").clearhlsearch()<CR><C-L>', {noremap = true, silent = true})
 
-" Toggle 'wrap' option
-nnoremap <silent> <Leader>w :set wrap!<CR>
+-- Toggle 'wrap' option
+vim.api.nvim_set_keymap('n', '<Leader>w', '<Cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>', {noremap = true, silent = true })
 
-" Open vimrc in a new split, picked based on current terminal size
-nnoremap <silent> <leader>v :exe <SID>optimalsplit() . ' ' . fnameescape($MYVIMRC)<CR>
-" Open vimrc on top of the current buffer
-nnoremap <silent> <leader>V :exe 'edit ' . fnameescape($MYVIMRC)<CR>
+-- Open vimrc in a new split, picked based on current terminal size
+vim.api.nvim_set_keymap('n', '<Leader>v', '<Cmd>lua require("window").opensplit(os.getenv("MYVIMRC"))<CR>', { noremap = true, silent = true })
 
-" Switch between open buffers
-nnoremap <silent> <leader>j :bnext<CR>
-nnoremap <silent> <leader>k :bprev<CR>
+-- Open vimrc on top of the current buffer
+vim.api.nvim_set_keymap('n', '<Leader>V', '<Cmd>lua require("window").open(os.getenv("MYVIMRC"))<CR>', { noremap = true, silent = true})
 
-" Sort selected lines
-vnoremap <silent> <leader>s :sort<CR>
+-- Switch between open buffers
+vim.api.nvim_set_keymap('n', '<Leader>j', '<Cmd>bnext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>k', '<Cmd>bprev<CR>', { noremap = true })
 
-" Toggle between relativenumber and norelativenumber
-nnoremap <silent> <leader>n :call <SID>togglerelativenumber()<CR>
+-- Sort selected lines
+vim.api.nvim_set_keymap('v', '<Leader>s', ':sort<CR>', { noremap = true, silent = true })
 
-" Run current file
-nnoremap <leader>x :!"%:p"<Enter>
+-- Toggle between relativenumber and norelativenumber
+vim.api.nvim_set_keymap('n', '<Leader>n', '<Cmd>lua vim.wo.relativenumber = not vim.wo.relativenumber<CR>', { noremap = true })
 
-" Place current file in the system clipboard
-nnoremap <leader>y :%y+<Enter>
+-- Place current file in the system clipboard
+vim.api.nvim_set_keymap('n', '<Leader>y', '<Cmd>%y+<CR>', { noremap = true })
+EOF
 
 " }}} Key Mappings
 " Netrw {{{

@@ -111,8 +111,10 @@ EOF
 " }}} Key Mappings
 " Netrw {{{
 
-let g:netrw_list_hide = '\.git/$,\.hg/$,\.svn/$' " Hide VCS directories
-let g:netrw_winsize = 25
+lua << EOF
+vim.g.netrw_list_hide = '\\.git/$,\\.hg/$,\\.svn/$'
+vim.g.netrw_winsize = 25
+EOF
 
 " }}} Netrw
 " Plugins {{{

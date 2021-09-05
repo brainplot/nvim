@@ -52,48 +52,51 @@ end
 EOF
 
 " }}} General Options
-" Function and Autogroups {{{
+" Functions and Autogroups {{{
 
-function! s:trimwhitespaces()
-    let l:save = winsaveview()
+lua << EOF
+local function optimalsplit()
+    local ww = vim.fn.winwidth(0)
+    local tw = vim.opt.textwidth:get() or 80
+    if (ww <= 2 * tw) then
+        return 'split'
+    else
+        return 'vsplit'
+    end
+end
+
+local function togglerelativenumber()
+    vim.opt.relativenumber = not vim.opt.relativenumber:get()
+end
+
+vim.cmd([[
+function! TrimWhitespaces()
+    let l:state = winsaveview()
     keeppatterns %s/\_s*\%$//e
     keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
+    call winrestview(l:state)
 endfunction
 
-function! s:optimalsplit()
-    return winwidth(0) <= 2 * (&tw ? &tw : 80) ? 'split' : 'vsplit'
-endfunction
-
-function! s:togglerelativenumber()
-    set relativenumber!
-endfunction
-
-augroup custom
+augroup buffercleanup
     autocmd!
     " Strip out unwanted whitespaces
-    autocmd BufWritePre * call <SID>trimwhitespaces()
-    " Don't automatically insert comments
-    autocmd FileType * set formatoptions-=c formatoptions-=r formatoptions-=o
+    autocmd BufWritePre * call TrimWhitespaces()
 augroup end
 
-if has('nvim')
-    augroup custom_nvim
-        " Use completion-nvim in every buffer
-        autocmd BufEnter * lua require('completion').on_attach()
-        autocmd BufNewFile *.* silent! execute '0r '.stdpath('config').'/templates/skeleton.'.expand("<afile>:e")
-    augroup end
-endif
+augroup skeleton
+    autocmd!
+    " Use completion-nvim in every buffer
+    " autocmd BufEnter * lua require('completion').on_attach()
+    autocmd BufNewFile *.* silent! execute '0r ' . stdpath('config') . '/templates/skeleton.' . expand('<afile>:e')
+augroup end
+]])
+EOF
 
-" }}} Function and Autogroups
+" }}} Functions and Autogroups
 " Key Mappings {{{
 
 " Use <C-L> to clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-
-" Quickly insert an empty new line without entering insert mode
-nnoremap <Leader>o o<Esc>
-nnoremap <Leader>O O<Esc>
 
 " Toggle 'wrap' option
 nnoremap <silent> <Leader>w :set wrap!<CR>

@@ -35,23 +35,23 @@ return require('packer').startup(function()
 		end,
 	}
 
-	-- One Dark color scheme
+	-- Color scheme
 	use {
-		'rakr/vim-one',
+		'projekt0n/github-nvim-theme',
 		config = function()
-			vim.g.one_allow_italics = 1
-			vim.cmd 'colorscheme one'
+			require('github-theme').setup()
 		end,
 	}
 
 	-- Statusline for displaying info about the current buffer
 	use {
 		'hoob3rt/lualine.nvim',
+		requires = 'projekt0n/github-nvim-theme',
 		config = function()
 			require('lualine').setup({
 				options = {
 					icons_enabled = false,
-					theme = 'onedark'
+					theme = 'github'
 				}
 			})
 		end

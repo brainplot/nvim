@@ -44,6 +44,19 @@ return require('packer').startup(function()
 		end,
 	}
 
+	-- Statusline for displaying info about the current buffer
+	use {
+		'hoob3rt/lualine.nvim',
+		config = function()
+			require('lualine').setup({
+				options = {
+					icons_enabled = false,
+					theme = 'onedark'
+				}
+			})
+		end
+	}
+
 	-- Enhanced highlighting for C++ files
 	use {
 		'octol/vim-cpp-enhanced-highlight',

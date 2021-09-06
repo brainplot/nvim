@@ -1,8 +1,7 @@
-" vim: set foldmethod=marker foldenable:
+-- vim: set foldmethod=marker foldenable:
 
-" General Options {{{
+-- General Options {{{
 
-lua << EOF
 -- TODO Change " " to "<Space>"
 vim.g.mapleader = " "
 vim.opt.completeopt = { 'menuone', 'noinsert', 'noselect' }
@@ -49,12 +48,10 @@ if vim.fn.executable('rg') then
     vim.opt.grepprg = 'rg --no-heading --vimgrep'
     vim.opt.grepformat = '%f:%l:%c:%m'
 end
-EOF
 
-" }}} General Options
-" Functions and Autogroups {{{
+-- }}} General Options
+-- Functions and Autogroups {{{
 
-lua << EOF
 vim.cmd([[
 function! TrimWhitespaces()
     let l:state = winsaveview()
@@ -76,12 +73,10 @@ augroup skeleton
     autocmd BufNewFile *.* silent! execute '0r ' . stdpath('config') . '/templates/skeleton.' . expand('<afile>:e')
 augroup end
 ]])
-EOF
 
-" }}} Functions and Autogroups
-" Key Mappings {{{
+-- }}} Functions and Autogroups
+-- Key Mappings {{{
 
-lua << EOF
 -- Use <C-L> to clear the highlighting of :set hlsearch.
 vim.api.nvim_set_keymap('n', '<C-L>', '<Cmd>lua require("buffer").clearhlsearch()<CR><C-L>', {noremap = true, silent = true})
 
@@ -106,19 +101,16 @@ vim.api.nvim_set_keymap('n', '<Leader>n', '<Cmd>lua vim.wo.relativenumber = not 
 
 -- Place current file in the system clipboard
 vim.api.nvim_set_keymap('n', '<Leader>y', '<Cmd>%y+<CR>', { noremap = true })
-EOF
 
-" }}} Key Mappings
-" Netrw {{{
+-- }}} Key Mappings
+-- Netrw {{{
 
-lua << EOF
 vim.g.netrw_list_hide = '\\.git/$,\\.hg/$,\\.svn/$'
 vim.g.netrw_winsize = 25
-EOF
 
-" }}} Netrw
-" Plugins {{{
+-- }}} Netrw
+-- Plugins {{{
 
-lua require('plugins')
+require('plugins')
 
-" }}} Plugins
+-- }}} Plugins

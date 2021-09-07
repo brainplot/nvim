@@ -105,11 +105,14 @@ return require('packer').startup(function()
 			if vim.fn.executable 'fd' == 1 then
 				vim.env.FZF_DEFAULT_COMMAND = 'fd -tf'
 			end
+
+			local keymap = require('keymap')
+
 			-- Search files known to Git
-			vim.api.nvim_set_keymap('n', '<Leader>F', '<Cmd>GFiles<CR>', { noremap = true })
-			vim.api.nvim_set_keymap('n', '<Leader>f', '<Cmd>Files<CR>', { noremap = true })
-			vim.api.nvim_set_keymap('n', '<Leader>b', '<Cmd>Buffers<CR>', { noremap = true })
-			vim.api.nvim_set_keymap('n', '<Leader>r', '<Cmd>Rg<CR>', { noremap = true })
+			keymap.setn('<Leader>F', '<Cmd>GFiles<CR>')
+			keymap.setn('<Leader>f', '<Cmd>Files<CR>')
+			keymap.setn('<Leader>b', '<Cmd>Buffers<CR>')
+			keymap.setn('<Leader>r', '<Cmd>Rg<CR>')
 		end,
 	}
 
@@ -117,17 +120,20 @@ return require('packer').startup(function()
 	use {
 		'neovim/nvim-lspconfig',
 		config = function()
-			vim.api.nvim_set_keymap('n', '<C-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', '<C-K>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', '1gD', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', 'gR', '<Cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', 'g0', '<Cmd>lua vim.lsp.buf.document_symbol()<CR>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', 'gW', '<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
-			vim.api.nvim_set_keymap('n', 'gx', '<Cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
+
+			local keymap = require('keymap')
+
+			keymap.setn('<C-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>')
+			keymap.setn('K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+			keymap.setn('gD', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
+			keymap.setn('<C-K>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
+			keymap.setn('1gD', '<Cmd>lua vim.lsp.buf.type_definition()<CR>')
+			keymap.setn('gr', '<Cmd>lua vim.lsp.buf.references()<CR>')
+			keymap.setn('gR', '<Cmd>lua vim.lsp.buf.rename()<CR>')
+			keymap.setn('g0', '<Cmd>lua vim.lsp.buf.document_symbol()<CR>')
+			keymap.setn('gW', '<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+			keymap.setn('gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
+			keymap.setn('gx', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
 		end,
 	}
 

@@ -74,30 +74,32 @@ augroup end
 -- }}} Functions and Autogroups
 -- Key Mappings {{{
 
+local keymap = require('keymap')
+
 -- Use <C-L> to clear the highlighting of :set hlsearch.
-vim.api.nvim_set_keymap('n', '<C-L>', '<Cmd>lua require("buffer").clearhlsearch()<CR><C-L>', {noremap = true, silent = true})
+keymap.setn('<C-L>', '<Cmd>lua require("buffer").clearhlsearch()<CR><C-L>')
 
 -- Toggle 'wrap' option
-vim.api.nvim_set_keymap('n', '<Leader>w', '<Cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>', {noremap = true, silent = true })
+keymap.setn('<Leader>w', '<Cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>')
 
 -- Open vimrc in a new split, picked based on current terminal size
-vim.api.nvim_set_keymap('n', '<Leader>v', '<Cmd>lua require("window").opensplit(vim.env.MYVIMRC)<CR>', { noremap = true, silent = true })
+keymap.setn('<Leader>v', '<Cmd>lua require("window").opensplit(vim.env.MYVIMRC)<CR>')
 
 -- Open vimrc on top of the current buffer
-vim.api.nvim_set_keymap('n', '<Leader>V', '<Cmd>lua require("window").open(vim.env.MYVIMRC)<CR>', { noremap = true, silent = true})
+keymap.setn('<Leader>V', '<Cmd>lua require("window").open(vim.env.MYVIMRC)<CR>')
 
 -- Switch between open buffers
-vim.api.nvim_set_keymap('n', '<Leader>j', '<Cmd>bnext<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>k', '<Cmd>bprev<CR>', { noremap = true })
+keymap.setn('<Leader>j', '<Cmd>bnext<CR>')
+keymap.setn('<Leader>k', '<Cmd>bprev<CR>')
 
 -- Sort selected lines
-vim.api.nvim_set_keymap('v', '<Leader>s', ':sort<CR>', { noremap = true, silent = true })
+keymap.setv('<Leader>s', ':sort<CR>')
 
 -- Toggle between relativenumber and norelativenumber
-vim.api.nvim_set_keymap('n', '<Leader>n', '<Cmd>lua vim.wo.relativenumber = not vim.wo.relativenumber<CR>', { noremap = true })
+keymap.setn('<Leader>n', '<Cmd>lua vim.wo.relativenumber = not vim.wo.relativenumber<CR>')
 
 -- Place current file in the system clipboard
-vim.api.nvim_set_keymap('n', '<Leader>y', '<Cmd>%y+<CR>', { noremap = true })
+keymap.setn_echo('<Leader>y', '<Cmd>%y+<CR>')
 
 -- }}} Key Mappings
 -- Netrw {{{

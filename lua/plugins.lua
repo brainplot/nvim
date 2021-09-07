@@ -117,7 +117,6 @@ return require('packer').startup(function()
 	use {
 		'neovim/nvim-lspconfig',
 		config = function()
-			require 'lsp'
 			vim.api.nvim_set_keymap('n', '<C-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 			vim.api.nvim_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
 			vim.api.nvim_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
@@ -130,5 +129,70 @@ return require('packer').startup(function()
 			vim.api.nvim_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
 			vim.api.nvim_set_keymap('n', 'gx', '<Cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 		end,
+	}
+
+	-- Snippet support
+	use { 'saadparwaiz1/cmp_luasnip', requires = "L3MON4D3/LuaSnip" }
+
+	-- Completion Support
+	use {
+		'hrsh7th/nvim-cmp',
+		requires = {
+			'L3MON4D3/LuaSnip',
+			{
+				'hrsh7th/cmp-nvim-lsp',
+				requires = 'neovim/nvim-lspconfig',
+				config = function()
+					local capabilities = vim.lsp.protocol.make_client_capabilities()
+					capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+					require('lsp').setup{
+						capabilities = capabilities
+					}
+				end,
+			}
+		},
+		config = function()
+			local cmp = require 'cmp'
+			local luasnip = require 'luasnip'
+			cmp.setup {
+				sources = {
+					{ name = 'nvim_lsp' },
+					{ name = 'luasnip' }
+				},
+				mapping = {
+					['<C-p>'] = cmp.mapping.select_prev_item(),
+					['<C-n>'] = cmp.mapping.select_next_item(),
+					['<C-Space>'] = cmp.mapping.complete(),
+					['<C-e>'] = cmp.mapping.close(),
+					['<CR>'] = cmp.mapping.confirm {
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = true,
+					},
+					['<Tab>'] = function(fallback)
+						if vim.fn.pumvisible() == 1 then
+							vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
+						elseif luasnip.expand_or_jumpable() then
+							vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
+						else
+							fallback()
+						end
+					end,
+					['<S-Tab>'] = function(fallback)
+						if vim.fn.pumvisible() == 1 then
+							vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
+						elseif luasnip.jumpable(-1) then
+							vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
+						else
+							fallback()
+						end
+					end,
+				},
+				snippet = {
+					expand = function(args)
+						luasnip.lsp_expand(args.body)
+					end,
+				},
+			}
+		end
 	}
 end)

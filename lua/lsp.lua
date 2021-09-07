@@ -1,47 +1,50 @@
-local nvim_lsp = require('lspconfig')
+local lsp = {}
 
-function on_attach()
+local function on_attach()
 	vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 	vim.wo.signcolumn = 'yes'
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+function lsp.setup(userConfig)
+	local lspconfig = require('lspconfig')
 
-nvim_lsp.gopls.setup {
-	capabilities = capabilities,
-	cmd = {'gopls', 'serve'},
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = true,
+	lspconfig.gopls.setup {
+		capabilities = userConfig.capabilities,
+		cmd = {'gopls', 'serve'},
+		settings = {
+			gopls = {
+				analyses = {
+					unusedparams = true,
+				},
+				staticcheck = true,
 			},
-			staticcheck = true,
 		},
-	},
-	on_attach = on_attach
-}
+		on_attach = on_attach
+	}
 
-nvim_lsp.rust_analyzer.setup {
-	capabilities = capabilities,
-	on_attach = on_attach,
-	settings = {
-		['rust-analyzer'] = {
-			assist = {
-				importMergeBehavior = 'last',
-			},
-			cargo = {
-				loadOutDirsFromCheck = true,
-			},
-			lens = {
-				debug = false,
-				enable = false,
+	lspconfig.rust_analyzer.setup {
+		capabilities = userConfig.capabilities,
+		on_attach = on_attach,
+		settings = {
+			['rust-analyzer'] = {
+				assist = {
+					importMergeBehavior = 'last',
+				},
+				cargo = {
+					loadOutDirsFromCheck = true,
+				},
+				lens = {
+					debug = false,
+					enable = false,
+				}
 			}
 		}
 	}
-}
 
-nvim_lsp.terraformls.setup {
-	capabilities = capabilities,
-	on_attach = on_attach
-}
+	lspconfig.terraformls.setup {
+		capabilities = userConfig.capabilities,
+		on_attach = on_attach
+	}
+end
+
+return lsp

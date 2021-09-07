@@ -4,7 +4,7 @@
 
 -- TODO Change " " to "<Space>"
 vim.g.mapleader = " "
-vim.opt.completeopt = { 'menuone', 'noinsert', 'noselect' }
+vim.opt.completeopt = { 'menuone', 'noinsert' }
 vim.opt.foldmethod = 'syntax'
 vim.opt.formatoptions:remove { 'o' }
 vim.opt.hidden = true

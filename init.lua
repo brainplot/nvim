@@ -83,10 +83,10 @@ vim.api.nvim_set_keymap('n', '<C-L>', '<Cmd>lua require("buffer").clearhlsearch(
 vim.api.nvim_set_keymap('n', '<Leader>w', '<Cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>', {noremap = true, silent = true })
 
 -- Open vimrc in a new split, picked based on current terminal size
-vim.api.nvim_set_keymap('n', '<Leader>v', '<Cmd>lua require("window").opensplit(os.getenv("MYVIMRC"))<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>v', '<Cmd>lua require("window").opensplit(vim.env.MYVIMRC)<CR>', { noremap = true, silent = true })
 
 -- Open vimrc on top of the current buffer
-vim.api.nvim_set_keymap('n', '<Leader>V', '<Cmd>lua require("window").open(os.getenv("MYVIMRC"))<CR>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>V', '<Cmd>lua require("window").open(vim.env.MYVIMRC)<CR>', { noremap = true, silent = true})
 
 -- Switch between open buffers
 vim.api.nvim_set_keymap('n', '<Leader>j', '<Cmd>bnext<CR>', { noremap = true })

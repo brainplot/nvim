@@ -139,6 +139,7 @@ return require('packer').startup(function()
 		'hrsh7th/nvim-cmp',
 		requires = {
 			'L3MON4D3/LuaSnip',
+			'hrsh7th/cmp-buffer',
 			{
 				'hrsh7th/cmp-nvim-lsp',
 				requires = 'neovim/nvim-lspconfig',
@@ -157,6 +158,7 @@ return require('packer').startup(function()
 			cmp.setup {
 				sources = {
 					{ name = 'nvim_lsp' },
+					{ name = 'buffer' },
 					{ name = 'luasnip' }
 				},
 				mapping = {

@@ -2,7 +2,6 @@
 
 -- General Options {{{
 
--- TODO Change " " to "<Space>"
 vim.g.mapleader = " "
 vim.opt.completeopt = { 'menuone', 'noinsert' }
 vim.opt.foldmethod = 'syntax'

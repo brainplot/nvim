@@ -58,6 +58,10 @@ end
 -- }}} General Options
 -- Functions and Autogroups {{{
 
+function _G.dbg(arg)
+	print(vim.inspect(arg))
+end
+
 vim.cmd([[
 function! TrimWhitespaces()
     let l:state = winsaveview()

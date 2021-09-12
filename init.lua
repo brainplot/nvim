@@ -4,6 +4,7 @@
 
 vim.g.mapleader = " "
 vim.opt.backup = false
+vim.opt.colorcolumn = '+1'
 vim.opt.completeopt = { 'menuone', 'noinsert' }
 vim.opt.foldenable = false
 vim.opt.foldmethod = 'syntax'
@@ -22,6 +23,7 @@ vim.opt.sidescrolloff = 4
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.tabstop = 4
+vim.opt.textwidth = 100
 vim.opt.title = true
 vim.opt.undofile = true
 vim.opt.wildignore = { '.hg', '.svn', '.git', '*~', '*.png', '*.jpg', '*.gif', 'Thumbs.db', '*.min.js', '*.swp', '*.exe' }

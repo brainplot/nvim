@@ -28,6 +28,7 @@ vim.opt.wildignore = { '.hg', '.svn', '.git', '*~', '*.png', '*.jpg', '*.gif', '
 vim.opt.wrap = false
 vim.opt.writebackup = false
 
+vim.opt.cindent = false
 vim.opt.expandtab = false
 vim.opt.shiftwidth = 0
 vim.opt.smarttab = false

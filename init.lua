@@ -16,19 +16,21 @@ vim.opt.listchars = { tab = '> ', trail = '-', extends = '>', precedes = '<', nb
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 2
-vim.opt.shiftwidth = 0
 vim.opt.shortmess:append 'c'
 vim.opt.showmode = false
 vim.opt.sidescrolloff = 4
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.tabstop = 4
 vim.opt.textwidth = 100
 vim.opt.title = true
 vim.opt.undofile = true
 vim.opt.wildignore = { '.hg', '.svn', '.git', '*~', '*.png', '*.jpg', '*.gif', 'Thumbs.db', '*.min.js', '*.swp', '*.exe' }
 vim.opt.wrap = false
 vim.opt.writebackup = false
+
+vim.opt.expandtab = false
+vim.opt.shiftwidth = 0
+vim.opt.tabstop = 4
 
 if vim.fn.has('win32') == 1 then
     vim.opt.path = '.\\**'

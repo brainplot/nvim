@@ -31,6 +31,7 @@ vim.opt.writebackup = false
 vim.opt.cindent = false
 vim.opt.expandtab = false
 vim.opt.shiftwidth = 0
+vim.opt.smartindent = false
 vim.opt.smarttab = false
 vim.opt.tabstop = 4
 

@@ -30,6 +30,7 @@ vim.opt.writebackup = false
 
 vim.opt.expandtab = false
 vim.opt.shiftwidth = 0
+vim.opt.smarttab = false
 vim.opt.tabstop = 4
 
 if vim.fn.has('win32') == 1 then

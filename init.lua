@@ -119,8 +119,3 @@ vim.g.netrw_list_hide = '\\.git/$,\\.hg/$,\\.svn/$'
 vim.g.netrw_winsize = 25
 
 -- }}} Netrw
--- Plugins {{{
-
-require('plugins')
-
--- }}} Plugins

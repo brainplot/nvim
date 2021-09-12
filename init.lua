@@ -3,30 +3,30 @@
 -- General Options {{{
 
 vim.g.mapleader = " "
+vim.opt.backup = false
 vim.opt.completeopt = { 'menuone', 'noinsert' }
+vim.opt.foldenable = false
 vim.opt.foldmethod = 'syntax'
 vim.opt.formatoptions:remove { 'o' }
 vim.opt.hidden = true
 vim.opt.incsearch = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '> ', trail = '-', extends = '>', precedes = '<', nbsp = '+' }
-vim.opt.backup = false
-vim.opt.foldenable = false
-vim.opt.showmode = false
-vim.opt.wrap = false
-vim.opt.writebackup = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 2
 vim.opt.shiftwidth = 0
 vim.opt.shortmess:append 'c'
+vim.opt.showmode = false
 vim.opt.sidescrolloff = 4
-vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.splitright = true
 vim.opt.tabstop = 4
 vim.opt.title = true
 vim.opt.undofile = true
 vim.opt.wildignore = { '.hg', '.svn', '.git', '*~', '*.png', '*.jpg', '*.gif', 'Thumbs.db', '*.min.js', '*.swp', '*.exe' }
+vim.opt.wrap = false
+vim.opt.writebackup = false
 
 if vim.fn.has('win32') == 1 then
     vim.opt.path = '.\\**'

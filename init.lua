@@ -83,36 +83,6 @@ augroup end
 ]])
 
 -- }}} Functions and Autogroups
--- Key Mappings {{{
-
-local keymap = require('keymap')
-
--- Use <C-L> to clear the highlighting of :set hlsearch.
-keymap.setn('<C-L>', '<Cmd>lua require("buffer").clearhlsearch()<CR><C-L>')
-
--- Toggle 'wrap' option
-keymap.setn('<Leader>w', '<Cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>')
-
--- Open vimrc in a new split, picked based on current terminal size
-keymap.setn('<Leader>v', '<Cmd>lua require("window").opensplit(vim.env.MYVIMRC)<CR>')
-
--- Open vimrc on top of the current buffer
-keymap.setn('<Leader>V', '<Cmd>lua require("window").open(vim.env.MYVIMRC)<CR>')
-
--- Switch between open buffers
-keymap.setn('<Leader>j', '<Cmd>bnext<CR>')
-keymap.setn('<Leader>k', '<Cmd>bprev<CR>')
-
--- Sort selected lines
-keymap.setv('<Leader>s', ':sort<CR>')
-
--- Toggle between relativenumber and norelativenumber
-keymap.setn('<Leader>n', '<Cmd>lua vim.wo.relativenumber = not vim.wo.relativenumber<CR>')
-
--- Place current file in the system clipboard
-keymap.setn_echo('<Leader>y', '<Cmd>%y+<CR>')
-
--- }}} Key Mappings
 -- Netrw {{{
 
 vim.g.netrw_list_hide = '\\.git/$,\\.hg/$,\\.svn/$'

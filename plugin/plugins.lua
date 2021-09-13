@@ -105,37 +105,16 @@ return require('packer').startup(function()
 			if vim.fn.executable 'fd' == 1 then
 				vim.env.FZF_DEFAULT_COMMAND = 'fd -tf'
 			end
-
-			local keymap = require('keymap')
-
 			-- Search files known to Git
-			keymap.setn('<Leader>F', '<Cmd>GFiles<CR>')
-			keymap.setn('<Leader>f', '<Cmd>Files<CR>')
-			keymap.setn('<Leader>b', '<Cmd>Buffers<CR>')
-			keymap.setn('<Leader>r', '<Cmd>Rg<CR>')
+			setn('<Leader>F', '<Cmd>GFiles<CR>')
+			setn('<Leader>f', '<Cmd>Files<CR>')
+			setn('<Leader>b', '<Cmd>Buffers<CR>')
+			setn('<Leader>r', '<Cmd>Rg<CR>')
 		end,
 	}
 
 	-- Language Server Protocol
-	use {
-		'neovim/nvim-lspconfig',
-		config = function()
-
-			local keymap = require('keymap')
-
-			keymap.setn('<C-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>')
-			keymap.setn('K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-			keymap.setn('gD', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
-			keymap.setn('<C-K>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
-			keymap.setn('1gD', '<Cmd>lua vim.lsp.buf.type_definition()<CR>')
-			keymap.setn('gr', '<Cmd>lua vim.lsp.buf.references()<CR>')
-			keymap.setn('gR', '<Cmd>lua vim.lsp.buf.rename()<CR>')
-			keymap.setn('g0', '<Cmd>lua vim.lsp.buf.document_symbol()<CR>')
-			keymap.setn('gW', '<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
-			keymap.setn('gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
-			keymap.setn('gx', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
-		end,
-	}
+	use { 'neovim/nvim-lspconfig' }
 
 	-- Snippet support
 	use { 'saadparwaiz1/cmp_luasnip', requires = "L3MON4D3/LuaSnip" }

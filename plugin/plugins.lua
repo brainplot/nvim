@@ -151,20 +151,19 @@ return require('packer').startup(function()
 					['<C-n>'] = cmp.mapping.select_next_item(),
 					['<C-Space>'] = cmp.mapping.complete(),
 					['<C-e>'] = cmp.mapping.close(),
-					['<CR>'] = cmp.mapping.confirm {
-						behavior = cmp.ConfirmBehavior.Replace,
-						select = true,
-					},
-					['<Tab>'] = function(fallback)
+					['<TAB>'] = cmp.mapping(function(fallback)
 						if vim.fn.pumvisible() == 1 then
-							vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
+							cmp.confirm {
+								behavior = cmp.ConfirmBehavior.Replace,
+								select = true,
+							}
 						elseif luasnip.expand_or_jumpable() then
 							vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
 						else
 							fallback()
 						end
-					end,
-					['<S-Tab>'] = function(fallback)
+					end, {'i', 's'}),
+					['<S-Tab>'] = cmp.mapping(function(fallback)
 						if vim.fn.pumvisible() == 1 then
 							vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
 						elseif luasnip.jumpable(-1) then
@@ -172,7 +171,7 @@ return require('packer').startup(function()
 						else
 							fallback()
 						end
-					end,
+					end, {'i', 's'}),
 				},
 				snippet = {
 					expand = function(args)

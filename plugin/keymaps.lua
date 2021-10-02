@@ -3,6 +3,7 @@ local noremapsilent = { noremap = true, silent = true }
 
 local n = 'n'
 local v = 'v'
+local i = 'i'
 
 function setn(lhs, rhs)
 	vim.api.nvim_set_keymap(n, lhs, rhs, noremapsilent)
@@ -10,6 +11,10 @@ end
 
 function setv(lhs, rhs)
 	vim.api.nvim_set_keymap(v, lhs, rhs, noremapsilent)
+end
+
+function seti(lhs, rhs)
+	vim.api.nvim_set_keymap(i, lhs, rhs, noremapsilent)
 end
 
 function setn_echo(lhs, rhs)

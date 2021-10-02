@@ -14,6 +14,7 @@ local function on_attach()
 	setn('gW', '<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
 	setn('gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
 	setn('gx', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
+	seti('<M-Space>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
 end
 
 function lsp.setup(userConfig)

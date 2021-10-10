@@ -151,6 +151,14 @@ return require('packer').startup(function()
 					['<C-n>'] = cmp.mapping.select_next_item(),
 					['<C-Space>'] = cmp.mapping.complete(),
 					['<C-e>'] = cmp.mapping.close(),
+					['<CR>'] = cmp.mapping(function(fallback)
+						if vim.fn.pumvisible() == 1 then
+							cmp.close()
+							vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, true, true), 'n')
+						else
+							fallback()
+						end
+					end, {'i', 's'}),
 					['<TAB>'] = cmp.mapping(function(fallback)
 						if vim.fn.pumvisible() == 1 then
 							cmp.confirm {

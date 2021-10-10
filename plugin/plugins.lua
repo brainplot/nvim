@@ -70,6 +70,18 @@ return require('packer').startup(function()
 		end,
 	}
 
+	-- Treesitter for better syntax highlighting
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		config = function()
+			require'nvim-treesitter.configs'.setup {
+				highlight = {
+					enable = true, -- false will disable the whole extension
+				},
+			}
+		end,
+	}
+
 	-- Enhanced Markdown support
 	use { 'plasticboy/vim-markdown', ft = 'markdown' }
 

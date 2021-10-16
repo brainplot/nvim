@@ -134,6 +134,7 @@ return require('packer').startup(function()
 	-- Completion Support
 	use {
 		'hrsh7th/nvim-cmp',
+		commit = '5bed2dc9f306a1659c68a3de88fc747cf6c1d12d',
 		requires = {
 			'L3MON4D3/LuaSnip',
 			'hrsh7th/cmp-buffer',

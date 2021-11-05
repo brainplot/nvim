@@ -177,7 +177,7 @@ return require('packer').startup(function()
 					['<TAB>'] = cmp.mapping(function(fallback)
 						if vim.fn.pumvisible() == 1 then
 							cmp.confirm {
-								behavior = cmp.ConfirmBehavior.Replace,
+								behavior = cmp.ConfirmBehavior.Insert,
 								select = true,
 							}
 						elseif luasnip.expand_or_jumpable() then

@@ -58,6 +58,12 @@ if vim.fn.executable('rg') then
 end
 
 -- }}} General Options
+-- Netrw {{{
+
+vim.g.netrw_list_hide = '\\.git/$,\\.hg/$,\\.svn/$'
+vim.g.netrw_winsize = 25
+
+-- }}} Netrw
 -- Functions and Autogroups {{{
 
 function _G.dbg(arg)
@@ -85,9 +91,3 @@ augroup end
 ]])
 
 -- }}} Functions and Autogroups
--- Netrw {{{
-
-vim.g.netrw_list_hide = '\\.git/$,\\.hg/$,\\.svn/$'
-vim.g.netrw_winsize = 25
-
--- }}} Netrw

@@ -42,7 +42,9 @@ else
 end
 
 vim.cmd([[
-    filetype plugin indent on
+    filetype on
+    filetype plugin on
+    filetype indent on
     syntax enable
 ]])
 

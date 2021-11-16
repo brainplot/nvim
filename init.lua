@@ -71,17 +71,10 @@ function _G.dbg(arg)
 end
 
 vim.cmd([[
-function! TrimWhitespaces()
-    let l:state = winsaveview()
-    keeppatterns %s/\_s*\%$//e
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:state)
-endfunction
-
 augroup buffercleanup
     autocmd!
     " Strip out unwanted whitespaces
-    autocmd BufWritePre * call TrimWhitespaces()
+    autocmd BufWritePre * lua require('buffer').trim()
 augroup end
 
 augroup skeleton

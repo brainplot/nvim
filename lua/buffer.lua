@@ -7,4 +7,13 @@ function buffer.clearhlsearch()
 	end
 end
 
+function buffer.trim()
+	local view = vim.fn.winsaveview()
+	vim.cmd [[
+		keeppatterns %s/\_s*\%$//e
+		keeppatterns %s/\s\+$//e
+	]]
+	vim.fn.winrestview(view)
+end
+
 return buffer

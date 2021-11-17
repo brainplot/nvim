@@ -19,7 +19,7 @@ end
 function buffer.writeskeleton()
 	local configdir = vim.fn.stdpath('config')
 	local extension = vim.fn.expand('%:e')
-	local skeletonfile = configdir .. '/templates/skeleton.' .. extension
+	local skeletonfile = vim.fn.fnameescape(configdir .. '/templates/skeleton.' .. extension)
 	if vim.fn.filereadable(skeletonfile) == 1 then
 		vim.cmd('read ++edit ' .. skeletonfile)
 		vim.fn.deletebufline(vim.fn.bufname(), 1)

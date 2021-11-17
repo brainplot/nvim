@@ -20,7 +20,11 @@ function buffer.writeskeleton()
 	local configdir = vim.fn.stdpath('config')
 	local extension = vim.fn.expand('%:e')
 	local skeletonfile = configdir .. '/templates/skeleton.' .. extension
-	vim.cmd('0r ' .. skeletonfile)
+	if vim.fn.filereadable(skeletonfile) == 1 then
+		vim.cmd('read ++edit ' .. skeletonfile)
+		vim.fn.deletebufline(vim.fn.bufname(), 1)
+		vim.bo.modified = false
+	end
 end
 
 return buffer

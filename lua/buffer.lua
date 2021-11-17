@@ -16,4 +16,11 @@ function buffer.trim()
 	vim.fn.winrestview(view)
 end
 
+function buffer.writeskeleton()
+	local configdir = vim.fn.stdpath('config')
+	local extension = vim.fn.expand('%:e')
+	local skeletonfile = configdir .. '/templates/skeleton.' .. extension
+	vim.cmd('0r ' .. skeletonfile)
+end
+
 return buffer

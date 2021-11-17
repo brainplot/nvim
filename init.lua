@@ -79,7 +79,7 @@ augroup end
 
 augroup skeleton
 	autocmd!
-	autocmd BufNewFile *.* silent! execute '0r ' . stdpath('config') . '/templates/skeleton.' . expand('%:e')
+	autocmd BufNewFile *.* lua require('buffer').writeskeleton()
 augroup end
 ]])
 

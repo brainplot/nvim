@@ -72,14 +72,14 @@ end
 
 vim.cmd([[
 augroup buffercleanup
-    autocmd!
-    " Strip out unwanted whitespaces
-    autocmd BufWritePre * lua require('buffer').trim()
+	autocmd!
+	" Strip out unwanted whitespaces
+	autocmd BufWritePre * lua require('buffer').trim()
 augroup end
 
 augroup skeleton
-    autocmd!
-    autocmd BufNewFile *.* silent! execute '0r ' . stdpath('config') . '/templates/skeleton.' . expand('<afile>:e')
+	autocmd!
+	autocmd BufNewFile *.* silent! execute '0r ' . stdpath('config') . '/templates/skeleton.' . expand('<afile>:e')
 augroup end
 ]])
 

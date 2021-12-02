@@ -21,9 +21,6 @@ function setn_echo(lhs, rhs)
 	vim.api.nvim_set_keymap(n, lhs, rhs, noremap)
 end
 
--- Use <C-L> to clear the highlighting of :set hlsearch.
-setn('<C-L>', '<Cmd>lua require("buffer").clearhlsearch()<CR><C-L>')
-
 -- Toggle 'wrap' option
 setn('<Leader>w', '<Cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>')
 

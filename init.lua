@@ -75,7 +75,7 @@ vim.cmd([[
 augroup buffercleanup
 	autocmd!
 	" Strip out unwanted whitespaces
-	autocmd BufWritePre * lua require('buffer').trim()
+	autocmd BufWritePre * lua local b = require('buffer'); b.trim(); vim.lsp.buf.formatting_sync()
 augroup end
 
 augroup skeleton

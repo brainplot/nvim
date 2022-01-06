@@ -47,7 +47,7 @@ return require('packer').startup(function()
 
 	-- Statusline for displaying info about the current buffer
 	use {
-		'hoob3rt/lualine.nvim',
+		'nvim-lualine/lualine.nvim',
 		requires = 'projekt0n/github-nvim-theme',
 		config = function()
 			require('lualine').setup({

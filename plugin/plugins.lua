@@ -131,14 +131,20 @@ return require('packer').startup(function()
 	use { 'neovim/nvim-lspconfig' }
 
 	-- Snippet support
-	use { 'saadparwaiz1/cmp_luasnip', requires = "L3MON4D3/LuaSnip" }
+	use {
+		'L3MON4D3/LuaSnip',
+		config = function()
+			require "snippets"
+		end
+	}
+
+	use { 'saadparwaiz1/cmp_luasnip', after = "LuaSnip" }
 
 	-- Completion Support
 	use {
 		'hrsh7th/nvim-cmp',
 		commit = '5bed2dc9f306a1659c68a3de88fc747cf6c1d12d',
 		requires = {
-			'L3MON4D3/LuaSnip',
 			'hrsh7th/cmp-buffer',
 			{
 				'hrsh7th/cmp-nvim-lsp',

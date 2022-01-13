@@ -143,7 +143,6 @@ return require('packer').startup(function()
 	-- Completion Support
 	use {
 		'hrsh7th/nvim-cmp',
-		commit = '5bed2dc9f306a1659c68a3de88fc747cf6c1d12d',
 		requires = {
 			'hrsh7th/cmp-buffer',
 			{
@@ -162,18 +161,27 @@ return require('packer').startup(function()
 			local cmp = require 'cmp'
 			local luasnip = require 'luasnip'
 			cmp.setup {
-				sources = {
-					{ name = 'nvim_lsp' },
-					{ name = 'buffer' },
-					{ name = 'luasnip' }
+				snippet = {
+					expand = function(args)
+						luasnip.lsp_expand(args.body)
+					end,
 				},
+				sources = cmp.config.sources({
+					{ name = 'nvim_lsp' },
+					{ name = 'luasnip' },
+				}, {
+					{ name = 'buffer' },
+				}),
 				mapping = {
-					['<C-p>'] = cmp.mapping.select_prev_item(),
-					['<C-n>'] = cmp.mapping.select_next_item(),
-					['<C-Space>'] = cmp.mapping.complete(),
-					['<C-e>'] = cmp.mapping.close(),
+					['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+					['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+					['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+					['<C-e>'] = cmp.mapping({
+						i = cmp.mapping.abort(),
+						c = cmp.mapping.close(),
+					}),
 					['<CR>'] = cmp.mapping(function(fallback)
-						if vim.fn.pumvisible() == 1 then
+						if cmp.visible() then
 							cmp.close()
 							vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, true, true), 'n')
 						else
@@ -181,11 +189,8 @@ return require('packer').startup(function()
 						end
 					end, {'i', 's'}),
 					['<TAB>'] = cmp.mapping(function(fallback)
-						if vim.fn.pumvisible() == 1 then
-							cmp.confirm {
-								behavior = cmp.ConfirmBehavior.Insert,
-								select = true,
-							}
+						if cmp.visible() then
+							cmp.confirm({ select = true })
 						elseif luasnip.expand_or_jumpable() then
 							vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
 						else
@@ -193,19 +198,12 @@ return require('packer').startup(function()
 						end
 					end, {'i', 's'}),
 					['<S-Tab>'] = cmp.mapping(function(fallback)
-						if vim.fn.pumvisible() == 1 then
-							vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
-						elseif luasnip.jumpable(-1) then
+						if luasnip.jumpable(-1) then
 							vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
 						else
 							fallback()
 						end
 					end, {'i', 's'}),
-				},
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
 				},
 			}
 		end

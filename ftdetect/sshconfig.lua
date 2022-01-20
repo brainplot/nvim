@@ -1,3 +1,3 @@
 vim.cmd [[
-autocmd BufNewFile,BufRead ~/.ssh/config.* setfiletype sshconfig
+autocmd BufNewFile,BufRead ~/.ssh/*.config setfiletype sshconfig
 ]]

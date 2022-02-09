@@ -3,18 +3,18 @@ local lsp = {}
 local function on_attach()
 	vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 	vim.wo.signcolumn = 'yes'
-	setn('<C-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>')
 	setn('K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-	setn('gD', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
+	setn('gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
+	setn('gt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>')
+	setn('gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
 	setn('<C-K>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
-	setn('1gD', '<Cmd>lua vim.lsp.buf.type_definition()<CR>')
-	setn('gr', '<Cmd>lua vim.lsp.buf.references()<CR>')
-	setn('gR', '<Cmd>lua vim.lsp.buf.rename()<CR>')
-	setn('g0', '<Cmd>lua vim.lsp.buf.document_symbol()<CR>')
-	setn('gW', '<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
-	setn('gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
+	seti('<C-K>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
+	setn('gR', '<Cmd>lua vim.lsp.buf.references()<CR>')
+	setn('gr', '<Cmd>lua vim.lsp.buf.rename()<CR>')
+	setn('gs', '<Cmd>lua vim.lsp.buf.document_symbol()<CR>')
+	setn('gS', '<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
 	setn('gx', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
-	seti('<M-Space>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
+	setn('gD', '<Cmd>lua vim.diagnostic.open_float()<CR>')
 end
 
 function lsp.setup(userConfig)

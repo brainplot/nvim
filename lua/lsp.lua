@@ -5,7 +5,6 @@ local function on_attach()
 	vim.wo.signcolumn = 'yes'
 	setn('K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
 	setn('gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
-	setn('gt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>')
 	setn('gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>')
 	setn('<C-K>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')
 	seti('<C-K>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>')

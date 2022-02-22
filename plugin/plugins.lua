@@ -117,8 +117,8 @@ return require('packer').startup(function()
 				vim.env.FZF_DEFAULT_COMMAND = 'fd -tf'
 			end
 			-- Search files known to Git
-			setn('<Leader>F', '<Cmd>GFiles<CR>')
-			setn('<Leader>f', '<Cmd>Files<CR>')
+			setn('<Leader>F', '<Cmd>Files<CR>')
+			setn('<Leader>f', '<Cmd>GFiles<CR>')
 			setn('<Leader>b', '<Cmd>Buffers<CR>')
 			setn('<Leader>r', '<Cmd>Rg<CR>')
 		end,

@@ -53,7 +53,7 @@ return require('packer').startup(function()
 			require('lualine').setup({
 				options = {
 					icons_enabled = false,
-					theme = 'auto'
+					theme = 'github_dark_default'
 				}
 			})
 		end

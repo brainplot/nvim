@@ -40,7 +40,9 @@ return require('packer').startup(function()
 		'projekt0n/github-nvim-theme',
 		config = function()
 			require('github-theme').setup({
-				theme_style = 'dark_default'
+				theme_style = 'dark_default',
+				dark_float = true,
+				hide_inactive_statusline = false,
 			})
 		end,
 	}
@@ -48,12 +50,12 @@ return require('packer').startup(function()
 	-- Statusline for displaying info about the current buffer
 	use {
 		'nvim-lualine/lualine.nvim',
-		requires = 'projekt0n/github-nvim-theme',
+		after = 'github-nvim-theme',
 		config = function()
 			require('lualine').setup({
 				options = {
 					icons_enabled = false,
-					theme = 'github_dark_default'
+					theme = 'auto',
 				}
 			})
 		end

@@ -25,6 +25,7 @@ vim.opt.splitright = true
 vim.opt.title = true
 vim.opt.undofile = true
 vim.opt.wildignore = { '.hg', '.svn', '.git', '*~', '*.png', '*.jpg', '*.gif', 'Thumbs.db', '*.min.js', '*.swp', '*.exe' }
+vim.opt.wildmode = { 'longest', 'full' }
 vim.opt.wrap = false
 vim.opt.writebackup = false
 

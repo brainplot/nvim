@@ -3,7 +3,12 @@ return require('packer').startup(function()
 	use 'wbthomason/packer.nvim'
 
 	-- Comment chunks of text
-	use { 'tpope/vim-commentary' }
+	use {
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
+		end
+	}
 
 	-- Surround chunks of text with symbols
 	use { 'tpope/vim-surround' }

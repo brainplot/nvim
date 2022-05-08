@@ -80,3 +80,31 @@ augroup end
 ]])
 
 -- }}} Functions and Autogroups
+-- Keymaps {{{
+
+local noremap = { noremap = true }
+local noremapsilent = { noremap = true, silent = true }
+
+-- Toggle 'wrap' option
+vim.api.nvim_set_keymap('n', '<Leader>w', '<Cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>', noremapsilent)
+
+-- Open vimrc in a new split, picked based on current terminal size
+vim.api.nvim_set_keymap('n', '<Leader>v', '<Cmd>lua require("window").opensplit(vim.env.MYVIMRC)<CR>', noremapsilent)
+
+-- Open vimrc on top of the current buffer
+vim.api.nvim_set_keymap('n', '<Leader>V', '<Cmd>lua require("window").open(vim.env.MYVIMRC)<CR>', noremapsilent)
+
+-- Switch between open buffers
+vim.api.nvim_set_keymap('n', '<Leader>j', '<Cmd>bnext<CR>', noremapsilent)
+vim.api.nvim_set_keymap('n', '<Leader>k', '<Cmd>bprev<CR>', noremapsilent)
+
+-- Sort selected lines
+vim.api.nvim_set_keymap('v', '<Leader>s', ':sort<CR>', noremapsilent)
+
+-- Toggle between relativenumber and norelativenumber
+vim.api.nvim_set_keymap('n', '<Leader>n', '<Cmd>lua vim.wo.relativenumber = not vim.wo.relativenumber<CR>', noremapsilent)
+
+-- Place current file in the system clipboard
+vim.api.nvim_set_keymap('n', '<Leader>y', '<Cmd>%y+<CR>', noremap)
+
+-- }}} Keymaps

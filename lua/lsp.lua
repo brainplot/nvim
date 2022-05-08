@@ -28,6 +28,10 @@ function lsp.setup(userConfig)
 					unusedparams = true,
 				},
 				staticcheck = true,
+				directoryFilters = {
+					'-node_modules',
+					'-dist',
+				},
 			},
 		},
 		on_attach = on_attach

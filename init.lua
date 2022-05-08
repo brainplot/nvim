@@ -41,13 +41,6 @@ else
     vim.opt.path = vim.fn.getcwd() .. '/**'
 end
 
-vim.cmd([[
-    filetype on
-    filetype plugin on
-    filetype indent on
-    syntax enable
-]])
-
 if vim.fn.has('termguicolors') then
     vim.opt.termguicolors = true
 end
@@ -56,6 +49,11 @@ if vim.fn.executable('rg') then
     vim.opt.grepprg = 'rg --no-heading --vimgrep'
     vim.opt.grepformat = '%f:%l:%c:%m'
 end
+
+vim.cmd([[
+    filetype plugin indent on
+    syntax on
+]])
 
 -- }}} General Options
 -- Netrw {{{

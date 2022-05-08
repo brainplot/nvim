@@ -19,9 +19,10 @@ end
 
 function lsp.setup(userConfig)
 	local lspconfig = require('lspconfig')
+	local capabilities = userConfig.capabilities or {}
 
 	lspconfig.gopls.setup {
-		capabilities = userConfig.capabilities,
+		capabilities = capabilities,
 		cmd = {'gopls', 'serve'},
 		settings = {
 			gopls = {
@@ -42,7 +43,7 @@ function lsp.setup(userConfig)
 	}
 
 	lspconfig.rust_analyzer.setup {
-		capabilities = userConfig.capabilities,
+		capabilities = capabilities,
 		on_attach = on_attach,
 		settings = {
 			['rust-analyzer'] = {
@@ -61,7 +62,7 @@ function lsp.setup(userConfig)
 	}
 
 	lspconfig.terraformls.setup {
-		capabilities = userConfig.capabilities,
+		capabilities = capabilities,
 		on_attach = on_attach
 	}
 end

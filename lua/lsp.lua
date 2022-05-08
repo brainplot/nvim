@@ -32,6 +32,9 @@ function lsp.setup(userConfig)
 					'-node_modules',
 					'-dist',
 				},
+				templateExtensions = {
+					'tmpl',
+				},
 			},
 		},
 		on_attach = on_attach

@@ -50,6 +50,9 @@ if vim.fn.executable('rg') then
     vim.opt.grepformat = '%f:%l:%c:%m'
 end
 
+vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes = 0
+
 vim.cmd([[
     filetype plugin indent on
     syntax on

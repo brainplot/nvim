@@ -4,7 +4,6 @@
 
 vim.g.mapleader = " "
 vim.opt.backup = false
-vim.opt.colorcolumn = '100'
 vim.opt.completeopt = { 'menuone', 'noinsert' }
 vim.opt.foldenable = false
 vim.opt.foldmethod = 'syntax'

@@ -98,10 +98,7 @@ return require('packer').startup(function()
 	use { 'pprovost/vim-ps1', ft = 'ps1' }
 
 	-- Rust support
-	use {
-		'rust-lang/rust.vim',
-		ft = 'rust',
-	}
+	use { 'rust-lang/rust.vim', ft = 'rust' }
 
 	-- fzf support
 	use {

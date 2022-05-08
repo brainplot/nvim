@@ -195,6 +195,20 @@ return require('packer').startup(function()
 						i = cmp.mapping.abort(),
 						c = cmp.mapping.close(),
 					}),
+					['<C-p>'] = function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						else
+							fallback()
+						end
+					end,
+					['<C-n>'] = function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						else
+							fallback()
+						end
+					end,
 					['<CR>'] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.close()

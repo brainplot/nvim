@@ -151,10 +151,8 @@ return require('packer').startup(function()
 				'hrsh7th/cmp-nvim-lsp',
 				requires = 'neovim/nvim-lspconfig',
 				config = function()
-					capabilities = require('cmp_nvim_lsp').default_capabilities()
-					require('lsp').setup{
-						capabilities = capabilities
-					}
+					local capabilities = require('cmp_nvim_lsp').default_capabilities()
+					require('lsp').setup(capabilities)
 				end,
 			}
 		},

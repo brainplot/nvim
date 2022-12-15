@@ -17,9 +17,8 @@ local function on_attach()
 	vim.api.nvim_set_keymap('n', 'gD', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
 end
 
-function lsp.setup(userConfig)
+function lsp.setup(capabilities)
 	local lspconfig = require('lspconfig')
-	local capabilities = userConfig.capabilities or {}
 
 	lspconfig.gopls.setup {
 		capabilities = capabilities,

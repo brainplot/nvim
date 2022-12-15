@@ -8,6 +8,7 @@ vim.opt.completeopt = { 'menuone', 'noinsert' }
 vim.opt.foldenable = false
 vim.opt.foldmethod = 'syntax'
 vim.opt.formatoptions:remove { 'o' }
+vim.opt.guicursor = 'a:block-nCursor'
 vim.opt.hidden = true
 vim.opt.incsearch = true
 vim.opt.list = true

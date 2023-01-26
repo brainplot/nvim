@@ -43,6 +43,7 @@ return require('packer').startup(function()
 	-- Color scheme
 	use {
 		'projekt0n/github-nvim-theme',
+		commit = '0.0.x',
 		config = function()
 			require('github-theme').setup({
 				theme_style = 'dark_default',

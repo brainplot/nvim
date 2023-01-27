@@ -15,6 +15,7 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '> ', trail = '-', extends = '>', precedes = '<', nbsp = '+' }
 vim.opt.mouse = 'a'
 vim.opt.number = true
+vim.opt.pastetoggle = '<F10>'
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 2
 vim.opt.shortmess:append 'c'

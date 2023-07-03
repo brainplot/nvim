@@ -65,18 +65,19 @@ function _G.dbg(arg)
 	print(vim.inspect(arg))
 end
 
-vim.cmd([[
-augroup buffercleanup
-	autocmd!
-	" Strip out unwanted whitespaces
-	autocmd BufWritePre * lua local b = require('buffer'); b.trim(); vim.lsp.buf.format()
-augroup end
+local buffercleanupid = vim.api.nvim_create_augroup('BufferCleanup', { clear = true })
+vim.api.nvim_create_autocmd("BufWritePre", {
+	group = buffercleanupid,
+	desc = 'Remove unwanted whitespaces',
+	callback = function() local b = require('buffer'); b.trim(); vim.lsp.buf.format(); end,
+})
 
-augroup skeleton
-	autocmd!
-	autocmd BufNewFile *.* lua require('buffer').writeskeleton()
-augroup end
-]])
+local newtemplateid = vim.api.nvim_create_augroup('NewTemplateFile', { clear = true })
+vim.api.nvim_create_autocmd("BufNewFile", {
+	group = newtemplateid,
+	desc = 'Fill new buffer with template',
+	callback = function() local b = require('buffer'); b.writeskeleton(); end,
+})
 
 -- }}} Functions and Autogroups
 -- Keymaps {{{

@@ -3,7 +3,7 @@ local buffer = {}
 function buffer.trim()
 	local view = vim.fn.winsaveview()
 	vim.cmd [[
-		keeppatterns keepjumps %s/\_s*\%$//e
+		keeppatterns keepjumps %s/\s\+$//e
 		keeppatterns keepjumps %s#\($\n\s*\)\+\%$##e
 	]]
 	vim.fn.winrestview(view)

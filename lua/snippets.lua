@@ -1,4 +1,4 @@
-local ls = require"luasnip"
+local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
 local isn = ls.indent_snippet_node
@@ -12,70 +12,70 @@ local events = require("luasnip.util.events")
 
 ls.snippets = {
 	go = {
-		s('struct', {
-			t('type '),
+		s("struct", {
+			t("type "),
 			i(1),
-			t({' struct {', '\t'}),
+			t({ " struct {", "\t" }),
 			i(0),
-			t({'', '}'}),
+			t({ "", "}" }),
 		}),
-		s('func', {
-			t('func '),
+		s("func", {
+			t("func "),
 			i(1),
-			t('('),
+			t("("),
 			i(2),
-			t(')'),
+			t(")"),
 			i(3),
-			t({' {', '\t'}),
+			t({ " {", "\t" }),
 			i(0),
-			t({'', '}'}),
+			t({ "", "}" }),
 		}),
-		s('funcm', {
-			t('func ('),
+		s("funcm", {
+			t("func ("),
 			i(1),
-			t(') '),
+			t(") "),
 			i(2),
-			t('('),
+			t("("),
 			i(3),
-			t(')'),
+			t(")"),
 			i(4),
-			t({' {', '\t'}),
+			t({ " {", "\t" }),
 			i(0),
-			t({'', '}'}),
+			t({ "", "}" }),
 		}),
-		s('switch', {
-			t('switch '),
+		s("switch", {
+			t("switch "),
 			i(1),
-			t({' {', ''}),
+			t({ " {", "" }),
 			i(0),
-			t({'', '}'}),
+			t({ "", "}" }),
 		}),
-		s('handler', {
-			t('func '),
+		s("handler", {
+			t("func "),
 			i(1),
-			t({'(w http.ResponseWriter, r *http.Request) {', '\t'}),
+			t({ "(w http.ResponseWriter, r *http.Request) {", "\t" }),
 			i(0),
-			t({'', '}'}),
+			t({ "", "}" }),
 		}),
-		s('pmain', {
-			t('package main'),
+		s("pmain", {
+			t("package main"),
 		}),
-		s('fmain', {
-			t({'func main() {', '\t'}),
+		s("fmain", {
+			t({ "func main() {", "\t" }),
 			i(0),
-			t({'', '}'}),
+			t({ "", "}" }),
 		}),
-		s('ftest', {
-			t('func Test'),
+		s("ftest", {
+			t("func Test"),
 			i(1),
-			t({'(t *testing.T) {', '\t'}),
+			t({ "(t *testing.T) {", "\t" }),
 			i(0),
-			t({'', '}'}),
+			t({ "", "}" }),
 		}),
-		s('iferr', {
-			t({'if err != nil {', '\t'}),
+		s("iferr", {
+			t({ "if err != nil {", "\t" }),
 			i(0),
-			t({'', '}'}),
+			t({ "", "}" }),
 		}),
-	}
+	},
 }

@@ -8,18 +8,18 @@ function window.optimalsplit(window)
 	end
 	local insufficientwidthvsplit = ww <= tw * 2
 	if insufficientwidthvsplit then
-		return 'split'
+		return "split"
 	else
-		return 'vsplit'
+		return "vsplit"
 	end
 end
 
 function window.opensplit(fname)
-	vim.cmd(window.optimalsplit(0) .. ' ' .. vim.fn.fnameescape(fname))
+	vim.cmd(window.optimalsplit(0) .. " " .. vim.fn.fnameescape(fname))
 end
 
 function window.open(fname)
-	vim.cmd('edit ' .. vim.fn.fnameescape(fname))
+	vim.cmd("edit " .. vim.fn.fnameescape(fname))
 end
 
 return window

@@ -9,45 +9,53 @@ function l.setup(config)
 		capabilities = capabilities,
 	})
 
-	lspconfig.gopls.setup({
-		cmd = { "gopls", "serve" },
-		settings = {
-			gopls = {
-				analyses = {
-					unusedparams = true,
-				},
-				staticcheck = true,
-				directoryFilters = {
-					"-node_modules",
-					"-dist",
-				},
-				templateExtensions = {
-					"tmpl",
-				},
-			},
-		},
-	})
-
-	lspconfig.rust_analyzer.setup({
-		settings = {
-			["rust-analyzer"] = {
-				assist = {
-					importMergeBehavior = "last",
-				},
-				cargo = {
-					loadOutDirsFromCheck = true,
-				},
-				lens = {
-					debug = false,
-					enable = false,
+	if vim.fn.executable("gopls") == 1 then
+		lspconfig.gopls.setup({
+			cmd = { "gopls", "serve" },
+			settings = {
+				gopls = {
+					analyses = {
+						unusedparams = true,
+					},
+					staticcheck = true,
+					directoryFilters = {
+						"-node_modules",
+						"-dist",
+					},
+					templateExtensions = {
+						"tmpl",
+					},
 				},
 			},
-		},
-	})
+		})
+	end
 
-	lspconfig.terraformls.setup({})
+	if vim.fn.executable("rust-analyzer") then
+		lspconfig.rust_analyzer.setup({
+			settings = {
+				["rust-analyzer"] = {
+					assist = {
+						importMergeBehavior = "last",
+					},
+					cargo = {
+						loadOutDirsFromCheck = true,
+					},
+					lens = {
+						debug = false,
+						enable = false,
+					},
+				},
+			},
+		})
+	end
 
-	lspconfig.emmet_ls.setup({})
+	if vim.fn.executable("terraform-ls") then
+		lspconfig.terraformls.setup({})
+	end
+
+	if vim.fn.executable("emmet-ls") then
+		lspconfig.emmet_ls.setup({})
+	end
 
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),

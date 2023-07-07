@@ -204,7 +204,7 @@ local plugins = {
 	},
 	{
 		"junegunn/fzf.vim",
-		dependencies = { 'junegunn/fzf' },
+		dependencies = { "junegunn/fzf" },
 		cond = function()
 			return vim.fn.executable("fzf") == 1
 		end,
@@ -233,14 +233,16 @@ local plugins = {
 			{
 				"L3MON4D3/LuaSnip",
 				version = "1.*",
-				config = function() require("snippets") end,
+				config = function()
+					require("snippets")
+				end,
 			},
 			{
 				"hrsh7th/cmp-nvim-lsp",
 			},
 			{
 				"saadparwaiz1/cmp_luasnip",
-			}
+			},
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -270,7 +272,7 @@ local plugins = {
 						else
 							fallback()
 						end
-					end, {'i', 's'}),
+					end, { "i", "s" }),
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							-- do nothing
@@ -279,7 +281,7 @@ local plugins = {
 						else
 							fallback()
 						end
-					end, {'i', 's'}),
+					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },

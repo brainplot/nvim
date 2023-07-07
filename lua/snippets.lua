@@ -27,46 +27,64 @@ local ms = ls.multi_snippet
 -- local k = require("luasnip.nodes.key_indexer").new_key
 
 ls.add_snippets("lua", {
-	s({trig = "snip", name = "luasnip snippet"}, {
-		t("s({ trig = \""), i(1), t("\", name = \""), i(2), t({"\" }, {", "\t"}),
+	s({ trig = "snip", name = "luasnip snippet" }, {
+		t('s({ trig = "'),
+		i(1),
+		t('", name = "'),
+		i(2),
+		t({ '" }, {', "\t" }),
 		i(0),
-		t({"", "}),"}),
-	})
+		t({ "", "})," }),
+	}),
 })
 
 ls.add_snippets("javascript", {
 	s({ trig = "clog", name = "console.log()" }, {
-		t("console.log("), i(1), t(")")
-	})
+		t("console.log("),
+		i(1),
+		t(")"),
+	}),
 })
 
 ls.add_snippets("go", {
-	s({trig = "funct", name = "test func" }, {
-		t("func Test"), i(1), t({"(t *testing.T) {", "\t"}),
+	s({ trig = "funct", name = "test func" }, {
+		t("func Test"),
+		i(1),
+		t({ "(t *testing.T) {", "\t" }),
 		i(0),
-		t({"", "}"}),
+		t({ "", "}" }),
 	}),
-	s({trig = "funcm", name = "method func" }, {
-		t("func ("), i(1), t(") "), i(2), t("("), i(3), t(") "), i(4, "string "), t({"{", "\t"}),
+	s({ trig = "funcm", name = "method func" }, {
+		t("func ("),
+		i(1),
+		t(") "),
+		i(2),
+		t("("),
+		i(3),
+		t(") "),
+		i(4, "string "),
+		t({ "{", "\t" }),
 		i(0),
-		t({"", "}"}),
+		t({ "", "}" }),
 	}),
-	s({trig = "main", name = "main()" }, {
-		t({"func main() {", "\t"}),
+	s({ trig = "main", name = "main()" }, {
+		t({ "func main() {", "\t" }),
 		i(0),
-		t({"", "}"}),
+		t({ "", "}" }),
 	}),
-	s({trig = "pmain", name = "package main"}, {
+	s({ trig = "pmain", name = "package main" }, {
 		t("package main"),
 	}),
-	s({trig = "iferr", name = "if err != nil"}, {
-		t({"if err != nil {", "\t"}),
+	s({ trig = "iferr", name = "if err != nil" }, {
+		t({ "if err != nil {", "\t" }),
 		i(0),
-		t({"", "}"}),
+		t({ "", "}" }),
 	}),
 	s({ trig = "handler", name = "http.Handler" }, {
-		t("func "), i(1), t({"(w http.ResponseWriter, r *http.Request) {", "\t"}),
+		t("func "),
+		i(1),
+		t({ "(w http.ResponseWriter, r *http.Request) {", "\t" }),
 		i(0),
-		t({"","}"}),
+		t({ "", "}" }),
 	}),
 })

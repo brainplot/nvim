@@ -200,6 +200,7 @@ local plugins = {
 	},
 	{
 		"junegunn/fzf.vim",
+		dependencies = { 'junegunn/fzf' },
 		cond = function()
 			return vim.fn.executable("fzf") == 1
 		end,

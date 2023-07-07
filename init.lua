@@ -94,34 +94,37 @@ local noremap = { noremap = true }
 local noremapsilent = { noremap = true, silent = true }
 
 -- Toggle 'wrap' option
-vim.api.nvim_set_keymap("n", "<Leader>w", "<Cmd>lua vim.wo.wrap = not vim.wo.wrap<CR>", noremapsilent)
+vim.keymap.set("n", "<Leader>w", function()
+	vim.wo.wrap = not vim.wo.wrap
+end, noremapsilent)
 
 -- Open vimrc in a new split, picked based on current terminal size
-vim.api.nvim_set_keymap("n", "<Leader>v", '<Cmd>lua require("window").opensplit(vim.env.MYVIMRC)<CR>', noremapsilent)
+vim.keymap.set("n", "<Leader>v", function()
+	require("window").opensplit(vim.env.MYVIMRC)
+end, noremapsilent)
 
 -- Open vimrc on top of the current buffer
-vim.api.nvim_set_keymap("n", "<Leader>V", '<Cmd>lua require("window").open(vim.env.MYVIMRC)<CR>', noremapsilent)
+vim.keymap.set("n", "<Leader>V", function()
+	require("window").open(vim.env.MYVIMRC)
+end, noremapsilent)
 
 -- Switch between open buffers
-vim.api.nvim_set_keymap("n", "<Leader>j", "<Cmd>bnext<CR>", noremapsilent)
-vim.api.nvim_set_keymap("n", "<Leader>k", "<Cmd>bprev<CR>", noremapsilent)
+vim.keymap.set("n", "<Leader>j", vim.cmd.bnext, noremapsilent)
+vim.keymap.set("n", "<Leader>k", vim.cmd.bprev, noremapsilent)
 
 -- Sort selected lines
-vim.api.nvim_set_keymap("v", "<Leader>s", ":sort<CR>", noremapsilent)
+vim.keymap.set("v", "<Leader>s", ":sort<CR>", noremapsilent)
 
 -- Toggle between relativenumber and norelativenumber
-vim.api.nvim_set_keymap(
-	"n",
-	"<Leader>n",
-	"<Cmd>lua vim.wo.relativenumber = not vim.wo.relativenumber<CR>",
-	noremapsilent
-)
+vim.keymap.set("n", "<Leader>n", function()
+	vim.wo.relativenumber = not vim.wo.relativenumber
+end, noremapsilent)
 
 -- Place current file in the system clipboard
-vim.api.nvim_set_keymap("n", "<Leader>y", "<Cmd>%y+<CR>", noremap)
+vim.keymap.set("n", "<Leader>y", "<Cmd>%y+<CR>", noremap)
 
 -- Open file browser
-vim.api.nvim_set_keymap("n", "<Leader>p", "<Cmd>Vexplore<CR>", noremap)
+vim.keymap.set("n", "<Leader>p", "<Cmd>Vexplore<CR>", noremap)
 
 -- }}} Keymaps
 -- Plugins {{{
@@ -220,10 +223,10 @@ local plugins = {
 			end
 			-- Search files known to Git
 			local opts = { noremap = true, silent = true }
-			vim.api.nvim_set_keymap("n", "<Leader>F", "<Cmd>Files<CR>", opts)
-			vim.api.nvim_set_keymap("n", "<Leader>f", "<Cmd>GFiles<CR>", opts)
-			vim.api.nvim_set_keymap("n", "<Leader>b", "<Cmd>Buffers<CR>", opts)
-			vim.api.nvim_set_keymap("n", "<Leader>r", "<Cmd>Rg<CR>", opts)
+			vim.keymap.set("n", "<Leader>F", vim.cmd.Files, opts)
+			vim.keymap.set("n", "<Leader>f", vim.cmd.GFiles, opts)
+			vim.keymap.set("n", "<Leader>b", vim.cmd.Buffers, opts)
+			vim.keymap.set("n", "<Leader>r", vim.cmd.Rg, opts)
 		end,
 	},
 	{

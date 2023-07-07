@@ -344,7 +344,8 @@ local plugins = {
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 					vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 					vim.keymap.set({ "n", "v" }, "<leader>x", vim.lsp.buf.code_action, opts)
-					vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+					vim.keymap.set("n", "gr", vim.lsp.buf.rename, opts)
+					vim.keymap.set("n", "gR", vim.lsp.buf.references, opts)
 
 					local lspbuffercleanupid = vim.api.nvim_create_augroup("LspBufferCleanup", { clear = true })
 					vim.api.nvim_create_autocmd("BufWritePre", {

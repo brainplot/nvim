@@ -120,6 +120,9 @@ vim.api.nvim_set_keymap(
 -- Place current file in the system clipboard
 vim.api.nvim_set_keymap("n", "<Leader>y", "<Cmd>%y+<CR>", noremap)
 
+-- Open file browser
+vim.api.nvim_set_keymap("n", "<Leader>p", "<Cmd>Vexplore<CR>", noremap)
+
 -- }}} Keymaps
 -- Plugins {{{
 

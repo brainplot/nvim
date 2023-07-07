@@ -58,6 +58,7 @@ end
 
 vim.g.netrw_list_hide = "\\.git/$,\\.hg/$,\\.svn/$"
 vim.g.netrw_winsize = 25
+vim.g.netrw_liststyle = 3
 
 -- }}} Netrw
 -- Functions and Autogroups {{{

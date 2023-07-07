@@ -269,7 +269,7 @@ local plugins = {
 						else
 							fallback()
 						end
-					end),
+					end, {'i', 's'}),
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							-- do nothing
@@ -278,7 +278,7 @@ local plugins = {
 						else
 							fallback()
 						end
-					end),
+					end, {'i', 's'}),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },

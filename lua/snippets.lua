@@ -98,3 +98,11 @@ ls.add_snippets("markdown", {
 		t(")"),
 	}),
 })
+
+ls.add_snippets("sh", {
+	s({ trig = "com", name = "$(...)" }, {
+		t("$("),
+		i(1),
+		t(")"),
+	}),
+})

@@ -2,10 +2,14 @@ local l = {}
 
 function l.setup(config)
 	local lspconfig = require("lspconfig")
+	local default_config = lspconfig.util.default_config
 	local capabilities = config.capabilities
 
-	lspconfig.gopls.setup({
+	default_config = vim.tbl_extend("force", default_config, {
 		capabilities = capabilities,
+	})
+
+	lspconfig.gopls.setup({
 		cmd = { "gopls", "serve" },
 		settings = {
 			gopls = {
@@ -25,7 +29,6 @@ function l.setup(config)
 	})
 
 	lspconfig.rust_analyzer.setup({
-		capabilities = capabilities,
 		settings = {
 			["rust-analyzer"] = {
 				assist = {
@@ -42,8 +45,23 @@ function l.setup(config)
 		},
 	})
 
-	lspconfig.terraformls.setup({
-		capabilities = capabilities,
+	lspconfig.terraformls.setup({})
+
+	lspconfig.emmet_ls.setup({
+		filetypes = {
+			"css",
+			"eruby",
+			"html",
+			"javascript",
+			"javascriptreact",
+			"less",
+			"sass",
+			"scss",
+			"svelte",
+			"pug",
+			"typescriptreact",
+			"vue",
+		},
 	})
 
 	vim.api.nvim_create_autocmd("LspAttach", {

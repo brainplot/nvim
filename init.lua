@@ -237,6 +237,9 @@ local plugins = {
 			{
 				"hrsh7th/cmp-nvim-lsp",
 			},
+			{
+				"saadparwaiz1/cmp_luasnip",
+			}
 		},
 		config = function()
 			local cmp = require("cmp")

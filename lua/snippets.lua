@@ -106,3 +106,9 @@ ls.add_snippets("sh", {
 		t(")"),
 	}),
 })
+
+ls.add_snippets("cmake", {
+	postfix({ trig = ".dbg", name = "log variable" }, {
+		l('message(NOTICE "' .. l.POSTFIX_MATCH .. " = $" .. l.POSTFIX_MATCH .. '")'),
+	}),
+})

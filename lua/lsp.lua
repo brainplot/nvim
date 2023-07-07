@@ -1,24 +1,8 @@
-local lsp = {}
+local l = {}
 
-local function on_attach()
-	vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-	vim.wo.signcolumn = "yes"
-	local opts = { noremap = true, silent = true }
-	vim.api.nvim_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	vim.api.nvim_set_keymap("n", "<C-K>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	vim.api.nvim_set_keymap("i", "<C-K>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gR", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gr", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gs", "<Cmd>lua vim.lsp.buf.document_symbol()<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gS", "<Cmd>lua vim.lsp.buf.workspace_symbol()<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gx", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gD", "<Cmd>lua vim.diagnostic.open_float()<CR>", opts)
-end
-
-function lsp.setup(capabilities)
+function l.setup(config)
 	local lspconfig = require("lspconfig")
+	local capabilities = config.capabilities
 
 	lspconfig.gopls.setup({
 		capabilities = capabilities,
@@ -38,12 +22,10 @@ function lsp.setup(capabilities)
 				},
 			},
 		},
-		on_attach = on_attach,
 	})
 
 	lspconfig.rust_analyzer.setup({
 		capabilities = capabilities,
-		on_attach = on_attach,
 		settings = {
 			["rust-analyzer"] = {
 				assist = {
@@ -62,8 +44,35 @@ function lsp.setup(capabilities)
 
 	lspconfig.terraformls.setup({
 		capabilities = capabilities,
-		on_attach = on_attach,
+	})
+
+	vim.api.nvim_create_autocmd("LspAttach", {
+		group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+		callback = function(ev)
+			-- Enable completion triggered by <c-x><c-o>
+			vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+			-- Buffer local mappings
+			local opts = { buffer = ev.buf }
+			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+			vim.keymap.set({ "n", "v" }, "<leader>x", vim.lsp.buf.code_action, opts)
+			vim.keymap.set("n", "gr", vim.lsp.buf.rename, opts)
+			vim.keymap.set("n", "gR", vim.lsp.buf.references, opts)
+
+			local lspbuffercleanupid = vim.api.nvim_create_augroup("LspBufferCleanup", { clear = true })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = lspbuffercleanupid,
+				desc = "Remove unwanted whitespaces from LSP buffer",
+				callback = function()
+					vim.lsp.buf.format({ async = true })
+				end,
+			})
+		end,
 	})
 end
 
-return lsp
+return l

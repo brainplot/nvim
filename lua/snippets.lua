@@ -36,6 +36,11 @@ ls.add_snippets("lua", {
 		i(0),
 		t({ "", "})," }),
 	}),
+	s({ trig = "funs", name = "one-liner function" }, {
+		t("function() "),
+		i(0),
+		t(" end"),
+	}),
 })
 
 ls.add_snippets("javascript", {

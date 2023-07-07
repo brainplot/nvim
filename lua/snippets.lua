@@ -88,3 +88,13 @@ ls.add_snippets("go", {
 		t({ "", "}" }),
 	}),
 })
+
+ls.add_snippets("markdown", {
+	s({ trig = "img", name = "image" }, {
+		t("!["),
+		i(1),
+		t("]("),
+		i(2),
+		t(")"),
+	}),
+})

@@ -170,13 +170,9 @@ local plugins = {
 		"projekt0n/github-nvim-theme",
 		lazy = true,
 		priority = 100,
-		commit = "0.0.x",
 		config = function()
-			require("github-theme").setup({
-				theme_style = "dark_default",
-				dark_float = true,
-				hide_inactive_statusline = false,
-			})
+			require("github-theme").setup()
+			vim.cmd.colorscheme("github_dark_tritanopia")
 		end,
 	},
 	{

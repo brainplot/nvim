@@ -47,22 +47,7 @@ function l.setup(config)
 
 	lspconfig.terraformls.setup({})
 
-	lspconfig.emmet_ls.setup({
-		filetypes = {
-			"css",
-			"eruby",
-			"html",
-			"javascript",
-			"javascriptreact",
-			"less",
-			"sass",
-			"scss",
-			"svelte",
-			"pug",
-			"typescriptreact",
-			"vue",
-		},
-	})
+	lspconfig.emmet_ls.setup({})
 
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),

@@ -23,8 +23,6 @@ local conds = require("luasnip.extras.expand_conditions")
 local postfix = require("luasnip.extras.postfix").postfix
 local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
-local ms = ls.multi_snippet
--- local k = require("luasnip.nodes.key_indexer").new_key
 
 ls.add_snippets("lua", {
 	s({ trig = "snip", name = "luasnip snippet" }, {

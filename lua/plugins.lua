@@ -90,6 +90,8 @@ return {
 				version = "v1.*",
 				config = function()
 					require("snippets")
+					vim.keymap.set({ "i", "s" }, "<C-j>", "<Plug>luasnip-next-choice", {})
+					vim.keymap.set({ "i", "s" }, "<C-k>", "<Plug>luasnip-prev-choice", {})
 				end,
 			},
 			{

@@ -20,4 +20,13 @@ function buffer.writeskeleton()
 	end
 end
 
+function buffer.getclients()
+	local result = {}
+	local activeclients = vim.lsp.buf_get_clients()
+	for _, v in ipairs(activeclients) do
+		table.insert(result, v.name)
+	end
+	return table.concat(result, ":")
+end
+
 return buffer

@@ -52,6 +52,9 @@ return {
 					icons_enabled = false,
 					theme = "auto",
 				},
+				sections = {
+					lualine_x = { "require'buffer'.getclients()", "encoding", "fileformat", "filetype" },
+				},
 			})
 		end,
 	},

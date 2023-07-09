@@ -67,80 +67,96 @@ ls.add_snippets("lua", {
 			),
 		})
 	),
-	s({ trig = "funs", name = "one-liner function" }, {
-		t("function() "),
-		i(0),
-		t(" end"),
-	}),
+	s({ trig = "funs", name = "one-liner function" }, fmt("function() {} end", { i(1) })),
 })
 
 ls.add_snippets("javascript", {
-	s({ trig = "clog", name = "console.log()" }, {
-		t("console.log("),
-		i(1),
-		t(")"),
-	}),
+	s({ trig = "clog", name = "console.log()" }, fmt("console.log({})", { i(1) })),
 })
 
 ls.add_snippets("go", {
-	s({ trig = "funct", name = "test func" }, {
-		t("func Test"),
-		i(1),
-		t({ "(t *testing.T) {", "\t" }),
-		i(0),
-		t({ "", "}" }),
-	}),
-	s({ trig = "funcm", name = "method func" }, {
-		t("func ("),
-		i(1),
-		t(") "),
-		i(2),
-		t("("),
-		i(3),
-		t(") "),
-		i(4, "string "),
-		t({ "{", "\t" }),
-		i(0),
-		t({ "", "}" }),
-	}),
-	s({ trig = "main", name = "main()" }, {
-		t({ "func main() {", "\t" }),
-		i(0),
-		t({ "", "}" }),
-	}),
+	s(
+		{ trig = "funct", name = "test function" },
+		fmt(
+			[[
+				func Test{}(t *testing.T) {{
+					{}
+				}}
+			]],
+			{
+				i(1),
+				i(0),
+			}
+		)
+	),
+	s(
+		{ trig = "funcm", name = "method func" },
+		fmt(
+			[[
+				func ({}) {}({}) {}{{
+					{}
+				}}
+			]],
+			{
+				i(1),
+				i(2),
+				i(3),
+				i(4),
+				i(0),
+			}
+		)
+	),
+	s(
+		{ trig = "main", name = "main()" },
+		fmt(
+			[[
+				func main() {{
+					{}
+				}}
+			]],
+			{
+				i(0),
+			}
+		)
+	),
 	s({ trig = "pmain", name = "package main" }, {
 		t("package main"),
 	}),
-	s({ trig = "iferr", name = "if err != nil" }, {
-		t({ "if err != nil {", "\t" }),
-		i(0),
-		t({ "", "}" }),
-	}),
-	s({ trig = "handler", name = "http.Handler" }, {
-		t("func "),
-		i(1),
-		t({ "(w http.ResponseWriter, r *http.Request) {", "\t" }),
-		i(0),
-		t({ "", "}" }),
-	}),
+	s(
+		{ trig = "iferr", name = "if err != nil" },
+		fmt(
+			[[
+				if err != nil {{
+					{}
+				}}
+			]],
+			{
+				i(0),
+			}
+		)
+	),
+	s(
+		{ trig = "handler", name = "http.Handler" },
+		fmt(
+			[[
+				func {}(w http.ResponseWriter, r *http.Request) {{
+					{}
+				}}
+			]],
+			{
+				i(1),
+				i(0),
+			}
+		)
+	),
 })
 
 ls.add_snippets("markdown", {
-	s({ trig = "img", name = "image" }, {
-		t("!["),
-		i(1),
-		t("]("),
-		i(2),
-		t(")"),
-	}),
+	s({ trig = "img", name = "image" }, fmt("![{}]({})", { i(1), i(2) })),
 })
 
 ls.add_snippets("sh", {
-	s({ trig = "com", name = "$(...)" }, {
-		t("$("),
-		i(1),
-		t(")"),
-	}),
+	s({ trig = "com", name = "$(...)" }, fmt("$({})", { i(1) })),
 })
 
 ls.add_snippets("cmake", {

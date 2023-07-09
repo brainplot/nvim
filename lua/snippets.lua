@@ -25,15 +25,45 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 
 ls.add_snippets("lua", {
-	s({ trig = "snip", name = "luasnip snippet" }, {
-		t('s({ trig = "'),
-		i(1),
-		t('", name = "'),
-		i(2),
-		t({ '" }, {', "\t" }),
-		i(0),
-		t({ "", "})," }),
-	}),
+	s(
+		{ trig = "snip", name = "luasnip snippet" },
+		c(1, {
+			fmt(
+				[=[
+				s(
+					{{ trig = "{}", name = "{}" }},
+					fmt(
+						[[
+							{}
+						]],
+						{{
+							{}
+						}}
+					)
+				),
+			]=],
+				{
+					i(1),
+					i(2),
+					i(3),
+					i(4),
+				}
+			),
+			fmt([=[s({{ trig = "{}", name = "{}" }}, fmt([[{}]], {{ {} }})),]=], { i(1), i(2), i(3), i(4) }),
+			fmt(
+				[[
+					s({{ trig = "{}", name = "{}" }}, {{
+						{}
+					}}),
+				]],
+				{
+					i(1),
+					i(2),
+					i(3),
+				}
+			),
+		})
+	),
 	s({ trig = "funs", name = "one-liner function" }, {
 		t("function() "),
 		i(0),

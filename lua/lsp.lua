@@ -2,15 +2,11 @@ local l = {}
 
 function l.setup(config)
 	local lspconfig = require("lspconfig")
-	local default_config = lspconfig.util.default_config
 	local capabilities = config.capabilities
-
-	default_config = vim.tbl_extend("force", default_config, {
-		capabilities = capabilities,
-	})
 
 	if vim.fn.executable("gopls") == 1 then
 		lspconfig.gopls.setup({
+			capabilities = capabilities,
 			cmd = { "gopls", "serve" },
 			settings = {
 				gopls = {
@@ -32,6 +28,7 @@ function l.setup(config)
 
 	if vim.fn.executable("rust-analyzer") then
 		lspconfig.rust_analyzer.setup({
+			capabilities = capabilities,
 			settings = {
 				["rust-analyzer"] = {
 					assist = {
@@ -50,11 +47,15 @@ function l.setup(config)
 	end
 
 	if vim.fn.executable("terraform-ls") then
-		lspconfig.terraformls.setup({})
+		lspconfig.terraformls.setup({
+			capabilities = capabilities,
+		})
 	end
 
 	if vim.fn.executable("emmet-ls") then
-		lspconfig.emmet_ls.setup({})
+		lspconfig.emmet_ls.setup({
+			capabilities = capabilities,
+		})
 	end
 
 	vim.api.nvim_create_autocmd("LspAttach", {

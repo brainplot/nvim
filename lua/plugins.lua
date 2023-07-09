@@ -9,6 +9,18 @@ return {
 	"tpope/vim-git",
 	"tpope/vim-vinegar",
 	{
+		"akinsho/git-conflict.nvim",
+		version = "v1.*",
+		config = function()
+			require("git-conflict").setup({
+				default_mappings = {
+					next = "<C-n>",
+					prev = "<C-p>",
+				},
+			})
+		end,
+	},
+	{
 		"ahmedkhalf/project.nvim",
 		config = function()
 			require("project_nvim").setup()

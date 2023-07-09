@@ -164,9 +164,3 @@ ls.add_snippets("cmake", {
 		l('message(NOTICE "' .. l.POSTFIX_MATCH .. " = $" .. l.POSTFIX_MATCH .. '")'),
 	}),
 })
-
-ls.add_snippets("rust", {
-	postfix({ trig = ".dbg", name = "log variable" }, {
-		l("dbg!(" .. l.POSTFIX_MATCH .. ")"),
-	}),
-})

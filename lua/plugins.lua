@@ -105,6 +105,11 @@ return {
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
 			cmp.setup({
+				-- https://github.com/hrsh7th/nvim-cmp/issues/1621
+				preselect = cmp.PreselectMode.None,
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
 				snippet = {
 					expand = function(args)
 						luasnip.lsp_expand(args.body)

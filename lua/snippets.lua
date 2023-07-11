@@ -164,3 +164,20 @@ ls.add_snippets("cmake", {
 		l('message(NOTICE "' .. l.POSTFIX_MATCH .. " = $" .. l.POSTFIX_MATCH .. '")'),
 	}),
 })
+
+ls.add_snippets("python", {
+	s(
+		{ trig = "def", name = "function" },
+		fmt(
+			[[
+				def {}({}):
+					{}
+			]],
+			{
+				i(1),
+				i(2),
+				i(0, "pass"),
+			}
+		)
+	),
+})

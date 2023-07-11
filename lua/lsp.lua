@@ -26,7 +26,7 @@ function l.setup(config)
 		})
 	end
 
-	if vim.fn.executable("rust-analyzer") then
+	if vim.fn.executable("rust-analyzer") == 1 then
 		lspconfig.rust_analyzer.setup({
 			capabilities = capabilities,
 			settings = {
@@ -46,14 +46,20 @@ function l.setup(config)
 		})
 	end
 
-	if vim.fn.executable("terraform-ls") then
+	if vim.fn.executable("terraform-ls") == 1 then
 		lspconfig.terraformls.setup({
 			capabilities = capabilities,
 		})
 	end
 
-	if vim.fn.executable("emmet-ls") then
+	if vim.fn.executable("emmet-ls") == 1 then
 		lspconfig.emmet_ls.setup({
+			capabilities = capabilities,
+		})
+	end
+
+	if vim.fn.executable("pylsp") == 1 then
+		lspconfig.pylsp.setup({
 			capabilities = capabilities,
 		})
 	end

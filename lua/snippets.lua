@@ -180,4 +180,26 @@ ls.add_snippets("python", {
 			}
 		)
 	),
+	s({ trig = "print", name = "print()" }, fmt("print({})", { i(1) })),
+	s(
+		{ trig = "class", name = "class" },
+		fmt(
+			[[
+				class {}({}):
+					{}
+			]],
+			{
+				i(1),
+				i(2),
+				i(0, "pass"),
+			}
+		)
+	),
+	s(
+		{ trig = "if", name = "if-else" },
+		c(1, {
+			fmt("if {}:\n\t{}", { i(1), i(0) }),
+			fmt("if {}:\n\t{}\nelse\n\t{}", { i(1), i(2), i(3) }),
+		})
+	),
 })

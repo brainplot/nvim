@@ -38,9 +38,14 @@ return {
 		"projekt0n/github-nvim-theme",
 		lazy = true,
 		priority = 100,
+		-- Run GithubThemeCompile after a change
 		config = function()
-			require("github-theme").setup()
-			vim.cmd.colorscheme("github_dark_tritanopia")
+			require("github-theme").setup({
+				options = {
+					transparent = true,
+				},
+			})
+			vim.cmd.colorscheme("github_dark_high_contrast")
 		end,
 	},
 	{

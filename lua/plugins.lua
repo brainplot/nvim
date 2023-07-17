@@ -171,7 +171,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 				}, {
-					{ name = "buffer" },
+					{ name = "buffer", keyword_length = 3 },
 				}),
 			})
 		end,

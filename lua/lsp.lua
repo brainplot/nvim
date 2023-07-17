@@ -70,6 +70,9 @@ function l.setup(config)
 			-- Enable completion triggered by <c-x><c-o>
 			vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
+			-- Show sign column
+			vim.wo.signcolumn = "yes"
+
 			-- Buffer local mappings
 			local opts = { buffer = ev.buf }
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)

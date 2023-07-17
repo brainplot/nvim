@@ -31,6 +31,10 @@ return {
 		ft = "toml",
 	},
 	{
+		"tmux-plugins/vim-tmux",
+		ft = "tmux",
+	},
+	{
 		"hashivim/vim-terraform",
 		ft = { "hcl", "terraform" },
 	},

@@ -64,6 +64,12 @@ function l.setup(config)
 		})
 	end
 
+	if vim.fn.executable("quick-lint-js") == 1 then
+		lspconfig.quick_lint_js.setup({
+			capabilities = capabilities,
+		})
+	end
+
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
 		callback = function(ev)

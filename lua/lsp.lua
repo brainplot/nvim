@@ -95,7 +95,7 @@ function l.setup(config)
 				group = lspbuffercleanupid,
 				desc = "Remove unwanted whitespaces from LSP buffer",
 				callback = function()
-					vim.lsp.buf.format({ async = true })
+					vim.lsp.buf.format()
 				end,
 			})
 		end,

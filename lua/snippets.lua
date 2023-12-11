@@ -221,3 +221,9 @@ ls.add_snippets("python", {
 		})
 	),
 })
+
+ls.add_snippets("rust", {
+	s({ trig = "skipnone", name = "skip_serializing_if = Option::is_none" }, {
+		t([==[#[serde(skip_serializing_if = "Option::is_none")]]==]),
+	}),
+})

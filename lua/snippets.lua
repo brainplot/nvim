@@ -165,6 +165,24 @@ ls.add_snippets("cmake", {
 	}),
 })
 
+ls.add_snippets("yaml", {
+	s(
+		{ trig = "task", name = "ansible task" },
+		fmt(
+			[[
+				- name: {}
+				  ansible.builtin.{}:
+				    {}
+			]],
+			{
+				i(1),
+				i(2),
+				i(3),
+			}
+		)
+	),
+})
+
 ls.add_snippets("python", {
 	s(
 		{ trig = "def", name = "function" },

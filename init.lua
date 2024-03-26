@@ -56,6 +56,10 @@ end
 -- }}} General Options
 -- Netrw {{{
 
+-- https://github.com/nvim-tree/nvim-tree.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.g.netrw_list_hide = "\\.git/$,\\.hg/$,\\.svn/$"
 vim.g.netrw_winsize = 25
 vim.g.netrw_liststyle = 3

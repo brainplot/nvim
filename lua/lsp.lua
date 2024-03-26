@@ -52,12 +52,6 @@ function l.setup(config)
 		})
 	end
 
-	if vim.fn.executable("emmet-ls") == 1 then
-		lspconfig.emmet_ls.setup({
-			capabilities = capabilities,
-		})
-	end
-
 	if vim.fn.executable("pylsp") == 1 then
 		lspconfig.pylsp.setup({
 			capabilities = capabilities,
@@ -68,6 +62,10 @@ function l.setup(config)
 		lspconfig.quick_lint_js.setup({
 			capabilities = capabilities,
 		})
+	end
+
+	if vim.fn.executable("emmet-language-server") == 1 then
+		lspconfig.emmet_language_server.setup({})
 	end
 
 	vim.api.nvim_create_autocmd("LspAttach", {

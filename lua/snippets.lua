@@ -73,6 +73,25 @@ ls.add_snippets("lua", {
 ls.add_snippets("javascript", {
 	s({ trig = "clog", name = "console.log()" }, fmt("console.log({})", { i(1) })),
 	s({ trig = "byid", name = "document.getElementById()" }, fmt("document.getElementById({})", { i(1) })),
+	s(
+		{ trig = "bycls", name = "document.getElementsByClassName()" },
+		fmt("document.getElementsByClassName({})", { i(1) })
+	),
+	s(
+		{ trig = "func", name = "function()" },
+		fmt(
+			[[
+				function {}({}) {{
+					{}
+				}}
+			]],
+			{
+				i(1),
+				i(2),
+				i(0),
+			}
+		)
+	),
 })
 
 ls.add_snippets("go", {

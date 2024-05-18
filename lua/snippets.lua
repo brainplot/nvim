@@ -72,6 +72,7 @@ ls.add_snippets("lua", {
 
 ls.add_snippets("javascript", {
 	s({ trig = "clog", name = "console.log()" }, fmt("console.log({})", { i(1) })),
+	s({ trig = "byid", name = "document.getElementById()" }, fmt("document.getElementById({})", { i(1) })),
 })
 
 ls.add_snippets("go", {
